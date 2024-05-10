@@ -1,0 +1,135 @@
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: #171626;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main{
+    width: 100%;
+    height: 100vh;
+}
+.comecinho{
+    width: 100%;
+    height: 5vh;
+}
+.so-pra-ter{
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.so-pra-ter i{
+    color: #e1e1e1e3;
+    font-size: 30px;
+    cursor: pointer;
+}
+.content-musi{
+    width: 100%;
+    height: 95vh;
+    position: absolute;
+    border-radius: 20px;
+
+    bottom: 0;
+    background: #212037;
+}
+.both{
+    width: 100%;
+    border-radius: 20px;
+    height: 88%;
+    display: flex;
+}
+.side-cont{
+    width: 25%;
+    height: 100%;
+    border-right: 10px solid #171626;
+}
+.real-cont{
+    width: 75%;
+    height: 100%; 
+}
+.header{
+    width: 100%;
+    height: 50px;
+    margin: 0;
+
+    display: flex;
+    justify-content: space-between;
+}
+.ida-volta{
+    width: 150px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cicli{
+    width: 35px;
+    height: 35px;
+    margin: 10px;
+    border-radius: 50%;
+    background: #171626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.cicli i{
+    font-size: 25px;
+    color: #e1e1e1a7;
+}
+.perf{
+    width: 100px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.perf i{
+    font-size: 40px;
+    color: #e1e1e1a7;
+    cursor: pointer;
+}
+.play-cont{
+    width: 100%;
+    height: 12%;
+    background: #171626;
+    display: flex;
+    justify-content: center;
+
+}
+.main-play{
+    width: 500px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.circle{
+    width: 50px;
+    height: 50px;
+    background: #dc67ee;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+.circle .playin{
+    font-size: 40px;
+    color: #171626;
+}
+.main-play i{
+    font-size: 35px;
+    color: #dc67ee;
+    cursor: pointer;
+}
+.opts{
+    width: 100%;
+    height: 120px; 
+
+    border-bottom: 7px solid #171626;
+}
