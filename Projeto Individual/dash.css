@@ -97,13 +97,12 @@ body{
     height: 12%;
     background: #171626;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 
 }
 .main-play{
     width: 500px;
     height: 100%;
-
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -129,7 +128,129 @@ body{
 }
 .opts{
     width: 100%;
-    height: 120px; 
-
+    height: 16%; 
     border-bottom: 7px solid #171626;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.biblioteca{
+    width: 100%;
+    height: 83%;
+}
+.introd{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    justify-content: space-between;
+}
+.p1{
+    width: 200px;
+    height: 100%;
+    background: #212037;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e1e1e1a7;
+    font-size: 18px;
+}
+.p1 i{
+    font-size: 25px;
+    margin: 10px;
+}
+.p2{
+    width: 100px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.p2 i{
+    font-size: 30px;
+    color: #e1e1e1a7;
+    cursor: pointer;
+}
+.p2 i:hover{
+    color: #dc67ee;
+    transition: 0.5s;
+}
+.opts li{
+    width: 300px;
+    margin: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    color: #e1e1e1a7;
+    cursor: pointer;
+    font-size: 22px;
+}
+.opts i{
+    margin: 20px;
+}
+.opts li:hover{
+    color: #dc67ee;
+    transition: 0.5s;
+}
+
+.onde-play{
+    width: 100%;
+    height: 92%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.musi-esp{
+    width: 300px;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.miniatura{
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background: #212037;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.miniatura img{
+    width: 80%;
+    height: 80%;
+}
+.des-musi{
+    width: 200px;
+    height: 60px;
+
+}
+.tt{
+    width: 100%;
+    height: 45%;
+    display: flex;
+    align-items: center;
+}
+.tt span{
+    font-size: 20px;
+    color: #e1e1e1a7;
+}
+.autor{
+    width: 100%;
+    height: 55%;
+    display: flex;
+    align-items: center;
+}
+.autor span{
+    color: #e1e1e1a7;
+    font-size: 14px;
+}
+.playlist{
+    width: 96%;
+    height: 80px;
+    border-radius: 10px;
+   margin-top: 15px;
+    background: #171626;
 }
