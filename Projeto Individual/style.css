@@ -31,7 +31,7 @@ body{
   transform-style: preserve-3d;
 }
 
-.section1::before{
+.section1::before {
   content: "";
   width: 100%;
   height: 100%;
@@ -40,18 +40,14 @@ body{
   background-size: contain;
   opacity: 0.8;
   transform: translateZ(-1px) scale(2.2);
-  transition: 0.4s ease-in;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
-body.dark .section1::before{
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
+
+body.dark .section1::before {
   opacity: 0.8;
   background: url(imagens/1332721.png) bottom center;
   background-size: contain;
   transform: translateZ(-1px) scale(3);
-  transition:  0.4s ease-out;
 }
 
 .section1::after{
