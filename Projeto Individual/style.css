@@ -8,9 +8,11 @@ html{
 }
 :root{
   --main-color: #1395ff;  
+  --card-color: #212037;
 }
 body.dark{
   --main-color: #ce54ba;
+  --card-color: #212037df;
 
 }
 body{
@@ -61,6 +63,10 @@ body.dark .section1::before {
   z-index: -1;
   background-size: contain;
 }
+body.dark .section1::after{
+  background: url(imagens/complete-removebg-day.png);
+  background-size: contain;
+}
 .section1 .text{
   top: 20%;
   transform: translateZ(-0.5px) scale(1.4, 1.6) translate(-31%,10%);
@@ -73,6 +79,9 @@ body.dark .section1::before {
   background-size: cover;
   justify-content: center;
   align-items: center;
+}
+body.dark .section2{
+  background: url(imagens/rest-back-day.png);
 }
 .contento{
   width: 85%;
@@ -91,13 +100,13 @@ body.dark .section1::before {
 }
 .titulo h2{
   font-size: 80px;
-  color: var(--main-color);
+  color: #fcfcfc;
 }
 .rest-contento{
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-around; 
   height: 750px;
 }
 
@@ -162,7 +171,7 @@ body.dark .logui2{
   cursor: pointer;
 }
 body.dark .options li{
-  color: #000000;
+  color: #ffffff;
   font-weight: 600;
 }
 .options li:hover{
@@ -311,11 +320,17 @@ body.dark .options li{
 
 .main-content{
   width: 100%;
-  height: 85vh;
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  overflow: hidden;
   position: fixed;
+  background-image: url(imagens/rest-back.png);
+  z-index: -1;
+}
+body.dark .main-content{
+  background-image: url(imagens/rest-back-day.png);
 }
 .form {
   display: grid;
@@ -325,7 +340,7 @@ body.dark .options li{
   position: relative;
   padding: 18px;
   top: 80px;
-  background-color: transparent;
+  background-color: var(--card-color);
   box-shadow: 0px 15px 60px #4a018f;
   outline: 1px solid #e99ff3;
   border-radius: 10px;
@@ -341,7 +356,7 @@ body.dark .options li{
   position: relative;
   padding: 18px;
   top: 80px;
-  background-color: transparent;
+  background-color: var(--card-color);
   box-shadow: 0px 15px 60px #4a018f;
   outline: 1px solid #dc67ee;
   border-radius: 10px;
@@ -486,17 +501,21 @@ body.dark .options li{
       justify-content: center;
       align-items: center;
     } 
+    body.dark .section3{
+      background: url(imagens/rest-back-day.png);
+    }
     .th-cont {
       width: 90%;
       height: 90vh; 
       border-radius: 8px;
       box-shadow: 0 0 12px 8px #dc67ee50;
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       align-items: center;
   }
   .musi-cardinho{
-    width: 23%;
+    width: 103%;
+    max-width: 35%;
     height: 80%;
     border-radius: 25px;
     margin: 0;
@@ -509,7 +528,7 @@ body.dark .options li{
     display: flex;
     align-items: center;
     margin-left: 20px;
-    font-size: 30px;
+    font-size: 100%;
     color: #fff;
   }
   .tite img{
@@ -554,10 +573,12 @@ body.dark .options li{
   .fotu-play img{
     width: 100%;
     border-radius: 10px;
+    margin-left: 10px;
   }
 
   .musi-desc{
     width: 68%;
+    margin-left: 20px;
     height: 80px;
     display: flex;
     flex-direction: column;
@@ -566,4 +587,20 @@ body.dark .options li{
   }
   .musi-desc h2{
     margin: 0;
+  }
+  .headerRest{
+    width: 100%;
+    height: 80px;
+    background: #1716263e;
+    display: flex;
+    justify-content: space-between; 
+
+  }
+  .headerRest .logo img{
+    width: 42%;
+  }
+  .text-musi{
+    width: 60%;
+    height: 80vh;
+    background: #1395ff65;
   }

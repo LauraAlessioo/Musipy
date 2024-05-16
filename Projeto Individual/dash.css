@@ -152,7 +152,7 @@ body{
     align-items: center;
     justify-content: center;
     color: #e1e1e1a7;
-    font-size: 18px;
+    font-size: 16px;
 }
 .p1 i{
     font-size: 25px;
@@ -177,13 +177,13 @@ body{
 .opts li{
     width: 300px;
     margin: 10px;
-    height: 40px;
+    height: 30%;
     display: flex;
     align-items: center;
     list-style: none;
     color: #e1e1e1a7;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 20px;
 }
 .opts i{
     margin: 20px;

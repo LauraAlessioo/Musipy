@@ -3,12 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="main-content">
-
+      <div class="headerRest">
+        <div class="logo">
+          <a href="index.html"><img src="imagens/Musipy (2).png" alt="" class="logui1"></a>
+          <a href="index.html"><img src="imagens/logo day.png" alt="" class="logui2"></a>
+      </div>
+      <div class="options">
+          <a href="index.html"><li>Inicio</li></a>
+              <a href="#"><li>Sobre</li></a>
+                  <a href="cadastro.html"><li>Cadastro</li></a>
+                      <a href="login.html"><li>Login</li></a>
+      </div>
+      <div class="modo">
+          <label class="switch">
+              <span class="moon"><i class='bx bxs-sun'></i></span>  
+              <span class="sun"><i class='bx bxs-moon' ></i></span>
+              <input type="checkbox" class="input night">
+              <span class="slider"></span>
+            </label>
+      </div>
+      </div>
         
             <div class="formC">
                 <div class="scrip">
@@ -59,3 +80,23 @@
     <section class="segunda"></section>
     </body>
     </html>
+    <script>
+      const body = document.querySelector("body");
+  
+      const nightModeToggle = document.querySelector('.night');
+  
+  
+      nightModeToggle.addEventListener('click', () => {
+          body.classList.toggle('dark');
+  
+  
+          localStorage.setItem('nightMode', body.classList.contains('dark') ? 'true' : 'false');
+      });
+  
+      const nightMode = localStorage.getItem('nightMode');
+  
+      if (nightMode === 'true') {
+          body.classList.add('dark');
+      };
+  </script>
+  
