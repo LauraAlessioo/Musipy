@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="dash.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="imagens/icon.png">
 </head>
 <body>
     <div class="main">
@@ -18,7 +19,7 @@
             <div class="both">
                 <div class="side-cont">
                     <div class="opts">
-                        <li><i class='bx bxs-home'></i>Inicio</li>
+                        <li><a href="dash.html"><i class='bx bxs-home'></i>Inicio</a></li>
                         <li><i class='bx bxs-brain' ></i>Mental Area</li>
                     </div>
                     <div class="biblioteca">
@@ -46,9 +47,51 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="playlist"></div>
-                            <div class="playlist"></div>
-                            <div class="playlist"></div>
+                            <div class="playlist"  onclick="openP()" >
+                                <div class="musi-esp">
+                                    <div class="miniatura">
+                                        <img src="https://img.elo7.com.br/product/main/48FCCBE/botton-laco-autismo-broche-3-5cm-alfinete-botton.jpg" alt="">
+                                    </div>
+                                    <div class="des-musi">
+                                        <div class="tt">
+                                       <span>Autismo</span>
+                                        </div>
+                                        <div class="autor">
+                                           <span>Playlist por: <u>Aleatorio</u></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="playlist">
+                                <div class="musi-esp">
+                                    <div class="miniatura">
+                                        <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
+                                    </div>
+                                    <div class="des-musi">
+                                        <div class="tt">
+                                       <span>Hiperatividade</span>
+                                        </div>
+                                        <div class="autor">
+                                           <span>Playlist por: <u>Aleatorio</u></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="playlist">
+                                <div class="musi-esp">
+                                    <div class="miniatura">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSztCkjEhHsmye_MpHHnwvnlynLCrx-8izIjwlYlrADA&s" alt="">
+                                    </div>
+                                    <div class="des-musi">
+                                        <div class="tt">
+                                       <span>Treino  Fonoaudiologico</span>
+                                        </div>
+                                        <div class="autor">
+                                           <span>Playlist por: <u>Aleartorio</u></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             
                         </div>
                     </div>
@@ -87,8 +130,18 @@
                                     <img src="https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg" alt="" class="audio-selector" data-audio="Musicas/SuperWave.mp3">
                                     <p>SuperWave</p>
                                 </div>
+                                <div class="autorM"></div>
+                                <div class="tempo"></div>
                             </div>
-                            <div class="playlist"></div>
+                            <div class="playlist">
+                                <div class="cont">
+                                    <span>1</span>
+                                    <img src="https://i.scdn.co/image/ab67616d00001e02261feb89ee859b598bd34a97" alt="" class="audio-selector" data-audio="Musicas/Memo2.mp3">
+                                    <p>Cello Suite No. 1 in G Major</p>
+                                </div>
+                                <div class="autorM"></div>
+                                <div class="tempo"></div>
+                            </div>
                             <div class="playlist"></div>
                             <div class="playlist"></div>
                             <div class="playlist"></div>
@@ -102,18 +155,19 @@
             <div class="play-cont">
                 <div class="musi-esp">
                     <div class="miniatura">
-                        <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
+                        <img src="https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg" alt="">
                     </div>
                     <div class="des-musi">
                         <div class="tt">
-                       <span>Memorização</span>
+                       <span>SuperWave</span>
                         </div>
                         <div class="autor">
-                           <span>Playlist por: <u>Aleatorio</u></span>
+                           <span>Playlist por: <u>Equipe Musipy</u></span>
                         </div>
                     </div>
                 </div>
                 <div class="main-play">
+                    <div class="repo-func">
                     <i class='bx bx-shuffle'></i>
                     <i class='bx bx-skip-previous' ></i>
                     <div class="circle" id="playOupause">
@@ -121,6 +175,12 @@
                     </div>
                     <i class='bx bx-skip-next' ></i>
                     <i class='bx bx-sync' id="stopBtn"></i>
+                </div>
+                <div class="cono-bar">
+                    <span id="currentTime">0:00</span>
+                    <input type="range" id="seekBar" min="0" max="100">
+              <span id="duration">0:00</span>
+                </div>
                 </div>
                 <div class="musi-esp"></div>
             </div>
@@ -143,24 +203,55 @@ function openP(){
     var audio = document.getElementById('audio');
     var playOupause = document.getElementById('playOupause');
     var seletor = document.querySelectorAll('.audio-selector');
+    var seekBar = document.getElementById('seekBar');
+    var tempoAtual = document.getElementById('currentTime');
+    var durationSpan = document.getElementById('duration');
+    var playPauseIcon = document.getElementById('playPauseIcon');
 
-    seletor.forEach(selector => {
-        selector.addEventListener('click', (event) => {
-            const audioSrc = event.target.getAttribute('data-audio');
-            audio.src = audioSrc;
-            playPauseIcon.className = 'bx bx-play playin';
-            audio.load();
-        });
-    });
+audio.addEventListener('loadedmetadata', function() {
+    var duration = audio.duration;
+    durationSpan.textContent = formatTime(duration);
+});
 
-    playOupause.addEventListener('click', () => {
-        if (audio.paused) {
-            audio.play();
-            playPauseIcon.className = 'bx bx-pause playin';
-        } else {
-            audio.pause();
-            playPauseIcon.className = 'bx bx-play playin';
-        }
+
+audio.addEventListener('timeupdate', function() {
+    var currentTime = audio.currentTime;
+    tempoAtual.textContent = formatTime(currentTime);
+
+    var progress = (currentTime / audio.duration) * 100;
+    seekBar.value = progress;
+});
+
+seekBar.addEventListener('change', function() {
+    var seekTo = audio.duration * (seekBar.value / 100);
+    audio.currentTime = seekTo;
+});
+
+function formatTime(time) {
+    var minutes = Math.floor(time / 60);
+    var seconds = Math.floor(time % 60);
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    return minutes + ':' + seconds;
+}
+
+seletor.forEach(selector => {
+    selector.addEventListener('click', (event) => {
+        const audioSrc = event.target.getAttribute('data-audio');
+        audio.src = audioSrc;
+        playPauseIcon.className = 'bx bx-play playin';
+        audio.load();
     });
+});
+
+playOupause.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        playPauseIcon.className = 'bx bx-pause playin';
+    } else {
+        audio.pause();
+        playPauseIcon.className = 'bx bx-play playin';
+    }
+});
+
 
 </script>
