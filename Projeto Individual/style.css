@@ -47,7 +47,7 @@ body{
 
 body.dark .section1::before {
   opacity: 0.8;
-  background: url(imagens/1332721.png) bottom center;
+  background: url(imagens/sec.jpg) bottom center;
   background-size: contain;
   transform: translateZ(-1px) scale(3);
 }
@@ -603,4 +603,70 @@ body.dark .main-content{
     width: 60%;
     height: 80vh;
     background: #1395ff65;
+  }
+  #warn{
+    color: #fff;
+  }
+
+  .loader {
+    height: 50px;
+    display: flex;
+    align-items: flex-end;
+    gap: 30px;
+    opacity: 0;
+  }
+  
+  .bar {
+    height: 5px;
+    width: 12px;
+    animation-duration: 0.45s;
+    animation-name: mudarHeight;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  .red {
+    background-color: #dc67ee;
+    box-shadow: 1px 1px 10px #dc67ee;
+    animation-delay: 0.10s;
+  }
+  
+  .orange {
+    background-color: #dc67ee;
+    box-shadow: 1px 1px 10px #dc67ee;
+    animation-delay: 0.20s;
+  }
+  
+  .yellow {
+    background-color: #dc67ee;
+    box-shadow: 1px 1px 10px #dc67ee;
+    animation-delay: 0.25s;
+  }
+  
+  .green {
+    background-color: #dc67ee;
+    box-shadow: 1px 1px 10px #dc67ee;
+    animation-delay: 0.30s;
+  }
+  
+  .blue {
+    background-color: #dc67ee;
+    box-shadow: 1px 1px 10px #dc67ee;
+    animation-delay: 0.35s;
+  }
+  
+  .violet {
+    background-color: #dc67ee;
+    box-shadow: 1px 1px 10px #dc67ee;
+    animation-delay: 0.40s;
+  }
+  
+  @keyframes mudarHeight {
+    from {
+      height: 5px;
+    }
+  
+    to {
+      height: 40px;
+    }
   }

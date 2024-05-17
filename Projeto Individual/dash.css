@@ -49,12 +49,14 @@ body{
 .real-cont{
     width: 75%;
     height: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .header{
     width: 100%;
     height: 50px;
     margin: 0;
-
     display: flex;
     justify-content: space-between;
 }
@@ -252,5 +254,93 @@ body{
     height: 80px;
     border-radius: 10px;
    margin-top: 15px;
+   cursor: pointer;
     background: #171626;
+}
+  
+  #espc-playlist {
+    width: 100%;
+    height: 95%;
+
+    display: none;
+    align-items: center;
+    flex-direction: column;
+  }
+  .main-board{
+    width: 98%;
+    height: 95%;
+  }
+  .teto{
+    width: 100%;
+    height: 30%;
+    background: linear-gradient( to bottom, #ff42a177, #ffffff00);
+    border-radius: 10px;
+
+  }
+  .display-play{
+    width: 100%;
+    height: 67%;
+    overflow: auto;
+    transform: scale(0.95);
+  }
+  .display-play::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .contento-teto{
+    width: 40%;
+    height: 100%;
+    background: #dc67ee00;
+    display: flex;
+    justify-content: space-around;
+  }
+  .contento-teto img{
+    width: 220px;
+    height: 220px;
+  }
+  .teto-desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 20px;
+  }
+.teto-desc h1{
+    font-size: 80px;
+    color: #e1e1e1a7;
+}
+.teto-desc span{
+    font-weight: 600;
+    color: #e1e1e1a7;
+}
+.cont{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.cont img{
+    width: 20%;
+    height: 90%;
+    border-radius: 15px;
+}
+.cont span{
+    font-size: 20px;
+    font-weight: 600;
+    color: #e1e1e1a7;
+}
+.cont p{
+    font-size: 30px;
+    color: #e1e1e1a7;
+}
+.display-play .playlist:hover{
+    background: #17162673;
+    transition: 0.2s;
+}
+.onde-play .musi-esp .miniatura{
+    background: transparent;
+}
+.onde-play .playlist:hover{
+    background: #7029705b;
+    transition: 0.2s;
 }

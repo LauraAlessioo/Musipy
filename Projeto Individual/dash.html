@@ -31,7 +31,21 @@
                             </div>
                         </div>
                         <div class="onde-play">
-                            <div class="playlist"></div>
+                            <div class="playlist" onclick="openP()">
+                                <div class="musi-esp">
+                                    <div class="miniatura">
+                                        <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
+                                    </div>
+                                    <div class="des-musi">
+                                        <div class="tt">
+                                       <span>Memorização</span>
+                                        </div>
+                                        <div class="autor">
+                                           <span>Playlist por: <u>Aleatorio</u></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="playlist"></div>
                             <div class="playlist"></div>
                             <div class="playlist"></div>
@@ -43,7 +57,7 @@
                     <div class="header">
                         <div class="ida-volta">
                             <div class="cicli">
-                                <i class='bx bx-chevron-left'></i>
+                                <a href="dash.html"><i class='bx bx-chevron-left'></i></a>
                             </div>
                             <div class="cicli">
                                 <i class='bx bx-chevron-right'></i>
@@ -51,6 +65,36 @@
                         </div>
                         <div class="perf">
                             <i class='bx bxs-user-circle'></i>
+                        </div>
+                    </div>
+                    <div class="main-board" id="main-board">
+                    </div>
+                    <div id="espc-playlist">
+                        <div class="teto">
+                            <div class="contento-teto">
+                                <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
+                                <div class="teto-desc">
+                                    <span>Playlist por: Equipe Musipy</span>
+                                    <h1>Memorização</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="display-play">
+                            <audio id="audio" src=""></audio>
+                            <div class="playlist">
+                                <div class="cont">
+                                    <span>1</span>
+                                    <img src="https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg" alt="" class="audio-selector" data-audio="Musicas/SuperWave.mp3">
+                                    <p>SuperWave</p>
+                                </div>
+                            </div>
+                            <div class="playlist"></div>
+                            <div class="playlist"></div>
+                            <div class="playlist"></div>
+                            <div class="playlist"></div>
+                            <div class="playlist"></div>
+                            <div class="playlist"></div>
+                            <div class="playlist"></div>
                         </div>
                     </div>
                 </div>
@@ -72,11 +116,11 @@
                 <div class="main-play">
                     <i class='bx bx-shuffle'></i>
                     <i class='bx bx-skip-previous' ></i>
-                    <div class="circle">
-                        <i class='bx bx-play playin'></i>
+                    <div class="circle" id="playOupause">
+                        <i class='bx bx-play playin' id="playPauseIcon"></i>
                     </div>
                     <i class='bx bx-skip-next' ></i>
-                    <i class='bx bx-sync'></i>
+                    <i class='bx bx-sync' id="stopBtn"></i>
                 </div>
                 <div class="musi-esp"></div>
             </div>
@@ -85,3 +129,38 @@
     </div>
 </body>
 </html>
+<script>
+
+function openP(){
+    var showPlay = document.getElementById('espc-playlist');
+    var main = document.getElementById('main-board');
+
+    main.style.display = "none";
+    showPlay.style.display = "flex";
+};
+</script>
+<script>
+    var audio = document.getElementById('audio');
+    var playOupause = document.getElementById('playOupause');
+    var seletor = document.querySelectorAll('.audio-selector');
+
+    seletor.forEach(selector => {
+        selector.addEventListener('click', (event) => {
+            const audioSrc = event.target.getAttribute('data-audio');
+            audio.src = audioSrc;
+            playPauseIcon.className = 'bx bx-play playin';
+            audio.load();
+        });
+    });
+
+    playOupause.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            playPauseIcon.className = 'bx bx-pause playin';
+        } else {
+            audio.pause();
+            playPauseIcon.className = 'bx bx-play playin';
+        }
+    });
+
+</script>
