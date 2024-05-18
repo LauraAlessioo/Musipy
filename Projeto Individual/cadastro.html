@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="imagens/icon.png">
 
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
@@ -30,6 +31,14 @@
             </label>
       </div>
       </div>
+
+
+        <div class="alerta_erro">
+          <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+          </div>
+        </div>
+  
         
             <div class="formC">
                 <div class="scrip">
@@ -40,39 +49,30 @@
                 <div class="card-just">
                 <div class="input-area">
                   <div class="form-ipt">
-                    <input placeholder="Nome de usuario" type="text">
+                    <input placeholder="Nome de usuario" type="text" id="nome_input">
                   </div>
                   <div class="form-ipt">
-                    <input placeholder="Telefone" type="text">
-                  </div>
-                  <div class="form-ipt">
-                    <input placeholder="Senha" type="password">
+                    <input placeholder="Senha" type="password" id="senha_input">
                   </div>
                 
                 </div>
                 <div class="input-area">
                   <div class="form-ipt">
-                    <input placeholder="Email" type="text">
+                    <input placeholder="Email" type="text" id="email_input">
                   </div>
                     <div class="form-ipt">
-                      <select class="slc1">
-                        <option value="#" disabled selected>O que você será?</option>
-                        <option value="usuario">Usuário</option>
-                        <option value="contribuidor">Contribuidor</option>
-                      </select>
-                    </div>
-                    <div class="form-ipt">
-                      <input placeholder="Confirmar Senha" type="password">
+                      <input placeholder="Confirmar Senha" type="password" id="confirmacao_senha_input">
                     </div>
                   </div>
             </div>
               </div>
               <div class="concluir">
-                <button id="submit-button" type="submit">Cadastrar</button>
+                <button id="submit-button" type="submit" onclick="cadastrar()">Cadastrar</button>
               </div>
               <div class="esqueci">
                 <a href="login.html">Já é cadastrado? Faça <u>Login</u></a>
-              </div>
+              </div>      
+               <div id="div_erros_login"></div>
             </div>
           
         
@@ -99,4 +99,76 @@
           body.classList.add('dark');
       };
   </script>
-  
+  <script>
+    function cadastrar() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == ""
+    
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>

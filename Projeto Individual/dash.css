@@ -130,7 +130,7 @@ body{
 }
 .opts{
     width: 100%;
-    height: 16%; 
+    height: 18%; 
     border-bottom: 7px solid #171626;
     display: flex;
     flex-direction: column;
@@ -182,10 +182,10 @@ body{
 }
 .opts li{
     width: 300px;
-    margin: 10px;
     height: 30%;
     display: flex;
     align-items: center;
+    margin-left: 16px;
     list-style: none;
     color: #e1e1e1a7;
     cursor: pointer;
@@ -418,4 +418,72 @@ body{
     background-color: #212037;
     border-radius: 5px;
 }
-
+.biblioteca-main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.save-card{
+    width: 300px;
+    height: 250px;
+    background: #171626;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+.save-card:hover{
+    box-shadow: 29px 50px 10px 8px #1716265e;
+    transform: scale(1.1);
+    transition: 0.8s ease-in-out; 
+}
+.defini{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.defini h3{
+    width: 100px;
+    height: 20px;
+    border: 1px solid #472a47;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 200;
+    display: flex;
+    justify-content: center;
+    color: #e1e1e1a7;
+    align-items: center;
+}
+.indentifc{
+    width: 70%;
+    border-radius: 10px;
+    height: 60%;
+    background: #dc67ee15;
+    display: flex;
+    justify-content: center;
+}
+.indentifc img{
+    border-radius: 10px;
+}
+.indentifc img:hover{
+    content: '';
+    filter: blur(2px);
+    transition: 0.5s;
+}
+.adc-play{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #dc67ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 20px;
+    font-size: 40px;
+    cursor: pointer;
+}
