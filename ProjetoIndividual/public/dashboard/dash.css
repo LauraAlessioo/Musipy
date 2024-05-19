@@ -185,11 +185,10 @@ body{
     height: 30%;
     display: flex;
     align-items: center;
-    margin-left: 16px;
     list-style: none;
     color: #e1e1e1a7;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 17px;
 }
 .opts i{
     margin: 20px;
@@ -423,10 +422,14 @@ body{
     height: 100%;
     display: flex;
     flex-wrap: wrap;
+    overflow: auto;
     justify-content: space-around;
+    scrollbar-width: thin;
+    scrollbar-color: #dc67ee #ffffff00; 
 }
+
 .save-card{
-    width: 300px;
+    width: 30%;
     height: 250px;
     background: #171626;
     display: flex;
@@ -434,6 +437,7 @@ body{
     align-items: center;
     margin-top: 30px;
 }
+
 .save-card:hover{
     box-shadow: 29px 50px 10px 8px #1716265e;
     transform: scale(1.1);

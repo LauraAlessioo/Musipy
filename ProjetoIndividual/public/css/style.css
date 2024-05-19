@@ -21,7 +21,7 @@ body{
   margin: 0;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   background: #171626;
   perspective: 1px;
   transform-style: preserve-3d;
@@ -29,7 +29,7 @@ body{
 .section1, .section2{
   width: 100%;
   min-height: 100vh;
-  position: relatie;
+  position: relative;
   transform-style: preserve-3d;
 }
 
@@ -38,7 +38,7 @@ body{
   width: 100%;
   height: 100%;
   position: absolute;
-  background: url(imagens/4393824_3163.jpg) bottom center;
+  background: url(backs/4393824_3163.jpg) bottom center;
   background-size: contain;
   opacity: 0.8;
   transform: translateZ(-1px) scale(2.2);
@@ -47,7 +47,7 @@ body{
 
 body.dark .section1::before {
   opacity: 0.8;
-  background: url(imagens/sec.jpg) bottom center;
+  background: url(backs/sec.jpg) bottom center;
   background-size: contain;
   transform: translateZ(-1px) scale(3);
 }
@@ -59,12 +59,12 @@ body.dark .section1::before {
   display: flex;
   top: 5%;
   position: absolute;
-  background: url(imagens/complete-removebg.png) top center;
+  background: url(backs/complete-removebg.png) top center;
   z-index: -1;
   background-size: contain;
 }
 body.dark .section1::after{
-  background: url(imagens/complete-removebg-day.png);
+  background: url(backs/complete-removebg-day.png);
   background-size: contain;
 }
 .section1 .text{
@@ -74,14 +74,14 @@ body.dark .section1::after{
 }
 
 .section2{
-  background: url(imagens/rest-back.png);
+  background: url(backs/rest-back.png);
   display: flex;
   background-size: cover;
   justify-content: center;
   align-items: center;
 }
 body.dark .section2{
-  background: url(imagens/rest-back-day.png);
+  background: url(backs/rest-back-day.png);
 }
 .contento{
   width: 85%;
@@ -326,11 +326,11 @@ body.dark .options li{
   align-items: center;
   overflow: hidden;
   position: fixed;
-  background-image: url(imagens/rest-back.png);
+  background-image: url(backs/rest-back.png);
   z-index: -1;
 }
 body.dark .main-content{
-  background-image: url(imagens/rest-back-day.png);
+  background-image: url(backs/rest-back-day.png);
 }
 .form {
   display: grid;
@@ -371,11 +371,12 @@ body.dark .main-content{
   background-color: #fff;
   color: black;
   width: 230px;
-  position: fixed;
+  position: absolute;
   border-radius: 4px;
+  right: 0;
   border: #e6005a 3px solid;
   padding: 10px;
-  margin-right: 10%;
+  margin-right: 5%;
 }
 
 .card_erro #mensagem_erro{
@@ -518,13 +519,13 @@ body.dark .main-content{
       width: 100%;
       position: absolute;
       height: 100vh;
-      background: url(imagens/rest-back.png);
+      background: url(backs/rest-back.png);
       display: flex;
       justify-content: center;
       align-items: center;
     } 
     body.dark .section3{
-      background: url(imagens/rest-back-day.png);
+      background: url(backs/rest-back-day.png);
     }
     .th-cont {
       width: 90%;
