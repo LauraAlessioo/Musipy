@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,95 +9,45 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="../imagens/icon.png">
 </head>
+
 <body>
+
+
     <div class="main">
         <div class="comecinho">
             <div class="so-pra-ter">
-                <i class='bx bx-dots-horizontal-rounded' ></i>
+                <i class='bx bx-dots-horizontal-rounded'></i>
             </div>
         </div>
+
+
         <div class="content-musi">
             <div class="both">
                 <div class="side-cont">
                     <div class="opts">
                         <li><a href="dash.html"><i class='bx bxs-home'></i>Inicio</a></li>
                         <li><i class='bx bx-library'></i>Bibioteca Musical</li>
-                        <li><i class='bx bxs-brain' ></i>Área Mental</li>
+                        <li><i class='bx bxs-brain'></i>Área Mental</li>
                     </div>
+
+
                     <div class="biblioteca">
                         <div class="introd">
                             <div class="p1">
-                                <i class='bx bxs-playlist'></i><h3>Suas Playlists</h3>
+                                <i class='bx bxs-playlist'></i>
+                                <h3>Suas Playlists</h3>
                             </div>
-                            <div class="p2">
-                                <i class='bx bx-plus' ></i>
+                            <div class="p2" id="add-playlist-btn">
+                                <i class='bx bx-plus'></i>
                             </div>
                         </div>
-                        <div class="onde-play">
-                            <div class="playlist" onclick="openP()">
-                                <div class="musi-esp">
-                                    <div class="miniatura">
-                                        <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
-                                    </div>
-                                    <div class="des-musi">
-                                        <div class="tt">
-                                       <span>Memorização</span>
-                                        </div>
-                                        <div class="autor">
-                                           <span>Playlist por: <u>Aleatorio</u></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="playlist"  onclick="openP()" >
-                                <div class="musi-esp">
-                                    <div class="miniatura">
-                                        <img src="https://img.elo7.com.br/product/main/48FCCBE/botton-laco-autismo-broche-3-5cm-alfinete-botton.jpg" alt="">
-                                    </div>
-                                    <div class="des-musi">
-                                        <div class="tt">
-                                       <span>Autismo</span>
-                                        </div>
-                                        <div class="autor">
-                                           <span>Playlist por: <u>Aleatorio</u></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="playlist">
-                                <div class="musi-esp">
-                                    <div class="miniatura">
-                                        <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
-                                    </div>
-                                    <div class="des-musi">
-                                        <div class="tt">
-                                       <span>Hiperatividade</span>
-                                        </div>
-                                        <div class="autor">
-                                           <span>Playlist por: <u>Aleatorio</u></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="playlist">
-                                <div class="musi-esp">
-                                    <div class="miniatura">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSztCkjEhHsmye_MpHHnwvnlynLCrx-8izIjwlYlrADA&s" alt="">
-                                    </div>
-                                    <div class="des-musi">
-                                        <div class="tt">
-                                       <span>Treino  Fonoaudiologico</span>
-                                        </div>
-                                        <div class="autor">
-                                           <span>Playlist por: <u>Aleartorio</u></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
+                        <div class="onde-play" id="playlist-container">
+                            <!-- Existing playlists will be rendered here -->
                         </div>
                     </div>
                 </div>
+
+
                 <div class="real-cont">
                     <div class="header">
                         <div class="ida-volta">
@@ -111,194 +62,248 @@
                             <i class='bx bxs-user-circle'></i>
                         </div>
                     </div>
+
+
+
+
                     <div class="main-board" id="main-board">
-                        <div class="biblioteca-main">
+                        <div class="biblioteca-main" id="biblioteca-main">
+                            <!-- save-card elements here -->
                             <div class="save-card">
                                 <div class="defini">
                                     <h3>Playlist</h3>
                                 </div>
-                                <div class="indentifc">
-                                    <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
-                                </div>
-                                <div class="adc-play">
-                                    <i class='bx bx-plus' ></i>
-                                </div>
-                            </div>
-                           <div class="save-card">
-                                <div class="defini">
-                                    <h3>Playlist</h3>
-                                </div>
-                                <div class="indentifc">
-                                    <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
-                                </div>
-                                <div class="adc-play">
-                                    <i class='bx bx-plus' ></i>
+                                <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg"
+                                    alt="">
+                                <div class="adc-play"
+                                    onclick="adicionarPlaylist('Memorização', 'Aleatorio', 'https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg')">
+                                    <i class='bx bx-plus'></i>
                                 </div>
                             </div>
                             <div class="save-card">
                                 <div class="defini">
                                     <h3>Playlist</h3>
                                 </div>
-                                <div class="indentifc">
-                                    <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
-                                </div>
-                                <div class="adc-play">
-                                    <i class='bx bx-plus' ></i>
-                                </div>
-                            </div>
-                             <div class="save-card">
-                                <div class="defini">
-                                    <h3>Playlist</h3>
-                                </div>
-                                <div class="indentifc">
-                                    <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
-                                </div>
-                                <div class="adc-play">
-                                    <i class='bx bx-plus' ></i>
+                                <img src="https://img.elo7.com.br/product/main/48FCCBE/botton-laco-autismo-broche-3-5cm-alfinete-botton.jpg"
+                                    alt="">
+                                <div class="adc-play"
+                                    onclick="adicionarPlaylist('Autismo', 'Aleatorio', 'https://img.elo7.com.br/product/main/48FCCBE/botton-laco-autismo-broche-3-5cm-alfinete-botton.jpg')">
+                                    <i class='bx bx-plus'></i>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
                     <div id="espc-playlist">
                         <div class="teto">
                             <div class="contento-teto">
-                                <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
+                                <img id="playlist-image"
+                                    src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg"
+                                    alt="">
                                 <div class="teto-desc">
-                                    <span>Playlist por: Equipe Musipy</span>
-                                    <h1>Memorização</h1>
+                                    <span id="playlist-author">Playlist por: Equipe Musipy</span>
+                                    <h1 id="playlist-title">Memorização</h1>
                                 </div>
                             </div>
                         </div>
-                        <div class="display-play">
+                        <div class="display-play" id="display-play">
                             <audio id="audio" src=""></audio>
-                            <div class="playlist">
-                                <div class="cont">
-                                    <span>1</span>
-                                    <img src="https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg" alt="" class="audio-selector" data-audio="Musicas/SuperWave.mp3">
-                                    <p>SuperWave</p>
-                                </div>
-                                <div class="autorM"></div>
-                                <div class="tempo"></div>
-                            </div>
-                            <div class="playlist">
-                                <div class="cont">
-                                    <span>1</span>
-                                    <img src="https://i.scdn.co/image/ab67616d00001e02261feb89ee859b598bd34a97" alt="" class="audio-selector" data-audio="Musicas/Memo2.mp3">
-                                    <p>Cello Suite No. 1 in G Major</p>
-                                </div>
-                                <div class="autorM"></div>
-                                <div class="tempo"></div>
-                            </div>
-                            <div class="playlist"></div>
-                            <div class="playlist"></div>
-                            <div class="playlist"></div>
-                            <div class="playlist"></div>
-                            <div class="playlist"></div>
-                            <div class="playlist"></div>
+                            <!-- musiquinhas will be dynamically added here -->
                         </div>
                     </div>
                 </div>
             </div>
+
+
             <div class="play-cont">
                 <div class="musi-esp">
                     <div class="miniatura">
-                        <img src="https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg" alt="">
+                        <img src="https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg"
+                            alt="">
                     </div>
                     <div class="des-musi">
                         <div class="tt">
-                       <span>SuperWave</span>
+                            <span>SuperWave</span>
                         </div>
                         <div class="autor">
-                           <span>Playlist por: <u>Equipe Musipy</u></span>
+                            <span>Playlist por: <u>Equipe Musipy</u></span>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="main-play">
                     <div class="repo-func">
-                    <i class='bx bx-shuffle'></i>
-                    <i class='bx bx-skip-previous' ></i>
-                    <div class="circle" id="playOupause">
-                        <i class='bx bx-play playin' id="playPauseIcon"></i>
+                        <i class='bx bx-shuffle'></i>
+                        <i class='bx bx-skip-previous'></i>
+                        <div class="circle" id="playOupause">
+                            <i class='bx bx-play playin' id="playPauseIcon"></i>
+                        </div>
+                        <i class='bx bx-skip-next'></i>
+                        <i class='bx bx-sync' id="stopBtn"></i>
                     </div>
-                    <i class='bx bx-skip-next' ></i>
-                    <i class='bx bx-sync' id="stopBtn"></i>
+                    <div class="cono-bar">  
+                        <span id="currentTime">0:00</span>
+                        <input type="range" id="seekBar" min="0" max="100">
+                        <span id="duration">0:00</span>
+                    </div>
                 </div>
-                <div class="cono-bar">
-                    <span id="currentTime">0:00</span>
-                    <input type="range" id="seekBar" min="0" max="100">
-              <span id="duration">0:00</span>
-                </div>
-                </div>
+
+
                 <div class="musi-esp"></div>
             </div>
         </div>
-
     </div>
 </body>
-</html>
 <script>
+    // Example data structure to store playlists
+    // Example data structure to store playlists
+    var playlists = [
+        {
+           nomePlaylist: 'Memorização',
+            author: 'Aleatorio',
+            image: 'https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg',
+            musiquinhas: [
+                {nomePlaylist: 'SuperWave', audio: 'Musicas/SuperWave.mp3', image: 'https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg' },
+                {nomePlaylist: 'Cello Suite No. 1 in G Major', audio: 'Musicas/Memo2.mp3', image: 'https://i.scdn.co/image/ab67616d00001e02261feb89ee859b598bd34a97' },
 
-function openP(){
-    var showPlay = document.getElementById('espc-playlist');
-    var main = document.getElementById('main-board');
+            ]
+        },
+        {
+           nomePlaylist: 'Autismo',
+            author: 'Aleatorio',
+            image: 'https://img.elo7.com.br/product/main/48FCCBE/botton-laco-autismo-broche-3-5cm-alfinete-botton.jpg',
+            musiquinhas: [
+                {nomePlaylist: 'Cinco Patinhos', audio: 'Musicas/Cinco Patinhos.mp3', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-YQR7x4pmjCLYeSB84PiXP2tLLteV98V8qYLCwF6HpQ&s' },
+                {nomePlaylist: 'Seu Lobato', audio: 'Musicas/SEU LOBATO.mp3', image: 'https://i.scdn.co/image/ab67616d0000b273d3fcdd3f29c2a854006727aa' },
 
-    main.style.display = "none";
-    showPlay.style.display = "flex";
-};
-</script>
-<script>
+            ]
+        }
+    ];
+
+
+    // Function to render playlists to the DOM
+    function renderPlaylists() {
+        var container = document.getElementById('playlist-container');
+        container.innerHTML = '';
+
+        playlists.forEach((playlist, index) => {
+            var div = document.createElement('div');
+            div.className = 'playlist';
+            div.setAttribute('onclick', `openP(${index})`);
+            div.innerHTML = `
+            <div class="musi-esp">
+                <div class="miniatura">
+                    <img src="${playlist.image}" alt="">
+                </div>
+                <div class="des-musi">
+                    <div class="tt">
+                        <span>${playlist.nomePlaylist}</span>
+                    </div>
+                    <div class="autor">
+                        <span>Playlist por: <u>${playlist.author}</u></span>
+                    </div>
+                </div>
+            </div>
+        `;
+            container.appendChild(div);
+        });
+    }
+    
+
+    // Initial render of playlists
+    renderPlaylists();
+
+    // Function to open a specific playlist
+    function openP(index) {
+        var playlist = playlists[index];
+        var showPlay = document.getElementById('espc-playlist');
+        var main = document.getElementById('main-board');
+        var displayPlay = document.getElementById('display-play');
+
+        main.style.display = "none";
+        showPlay.style.display = "flex";
+
+        document.getElementById('playlist-title').textContent = playlist.nomePlaylist;
+        document.getElementById('playlist-author').textContent = `Playlist por: ${playlist.author}`;
+        document.getElementById('playlist-image').src = playlist.image;
+
+        displayPlay.innerHTML = '';
+        playlist.musiquinhas.forEach((song, index) => {
+            var div = document.createElement('div');
+            div.className = 'playlist';
+            div.innerHTML = `
+            <div class="cont">
+                <span>${index + 1}</span>
+                <img src="${song.image}" alt="" class="audio-selector" data-audio="${song.audio}">
+                <p>${song.nomePlaylist}</p>
+            </div>
+            <div class="autorM"></div>
+            <div class="tempo"></div>
+        `;
+            displayPlay.appendChild(div);
+        });
+
+        // Update audio selector event listeners
+        document.querySelectorAll('.audio-selector').forEach(selector => {
+            selector.addEventListener('click', (event) => {
+                const audioSrc = event.target.getAttribute('data-audio');
+                audio.src = audioSrc;
+                playPauseIcon.className = 'bx bx-play playin';
+                audio.load();
+            });
+        });
+    }
+
+    
     var audio = document.getElementById('audio');
     var playOupause = document.getElementById('playOupause');
-    var seletor = document.querySelectorAll('.audio-selector');
     var seekBar = document.getElementById('seekBar');
     var tempoAtual = document.getElementById('currentTime');
     var durationSpan = document.getElementById('duration');
     var playPauseIcon = document.getElementById('playPauseIcon');
 
-audio.addEventListener('loadedmetadata', function() {
-    var duration = audio.duration;
-    durationSpan.textContent = formatTime(duration);
-});
-
-
-audio.addEventListener('timeupdate', function() {
-    var currentTime = audio.currentTime;
-    tempoAtual.textContent = formatTime(currentTime);
-
-    var progress = (currentTime / audio.duration) * 100;
-    seekBar.value = progress;
-});
-
-seekBar.addEventListener('change', function() {
-    var seekTo = audio.duration * (seekBar.value / 100);
-    audio.currentTime = seekTo;
-});
-
-function formatTime(time) {
-    var minutes = Math.floor(time / 60);
-    var seconds = Math.floor(time % 60);
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-    return minutes + ':' + seconds;
-}
-
-seletor.forEach(selector => {
-    selector.addEventListener('click', (event) => {
-        const audioSrc = event.target.getAttribute('data-audio');
-        audio.src = audioSrc;
-        playPauseIcon.className = 'bx bx-play playin';
-        audio.load();
+    audio.addEventListener('loadedmetadata', function () {
+        var duration = audio.duration;
+        durationSpan.textContent = formatTime(duration);
     });
-});
 
-playOupause.addEventListener('click', () => {
-    if (audio.paused) {
-        audio.play();
-        playPauseIcon.className = 'bx bx-pause playin';
-    } else {
-        audio.pause();
-        playPauseIcon.className = 'bx bx-play playin';
+    audio.addEventListener('timeupdate', function () {
+        var currentTime = audio.currentTime;
+        tempoAtual.textContent = formatTime(currentTime);
+
+        var progress = (currentTime / audio.duration) * 100;
+        seekBar.value = progress;
+    });
+
+    seekBar.addEventListener('change', function () {
+        var seekTo = audio.duration * (seekBar.value / 100);
+        audio.currentTime = seekTo;
+    });
+
+    function formatTime(time) {
+        var minutes = Math.floor(time / 60);
+        var seconds = Math.floor(time % 60);
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        return minutes + ':' + seconds;
     }
-});
 
+    playOupause.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            playPauseIcon.className = 'bx bx-pause playin';
+        } else {
+            audio.pause();
+            playPauseIcon.className = 'bx bx-play playin';
+        }
+    });
+
+    // Initial render of playlists
 
 </script>
+
+</html>
