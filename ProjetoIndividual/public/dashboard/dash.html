@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="dash.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="../imagens/icon.png">
 </head>
 
@@ -67,6 +68,17 @@
 
 
                     <div class="main-board" id="main-board">
+                        <div class="display-graf">
+                            <div class="graf">
+                                <h2>Índice de Acertos</h2>
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <div class="graf2">
+                                <h2>Melhora dos Acertos</h2>
+                                <canvas id="myChart2"></canvas>
+                            </div>
+                        </div>
+                        <div class="display-graf"></div>
                        
                     </div>
 
@@ -165,6 +177,7 @@
     for (var cont = 0; cont < playlists.length; cont++) {
         
         var playlist = playlists[cont];
+        
         var div = document.createElement('div');
         div.className = 'playlist';
         div.setAttribute('onclick', `abrirP(${cont})`);
@@ -277,5 +290,42 @@ conteudoPlay();
 
 
 </script>
+<script>
+    const labels = [
+        'Acertos',
+        'Erros',
+    ];
 
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Temperatura Média',
+            backgroundColor: '#212037',
+            borderColor: 'transparent',
+            data: [22],
+        },
+        {
+            label: 'Umidade Média',
+            backgroundColor: '#dc67ee',
+            borderColor: 'tranparent',
+            data: [90]
+        }
+    
+    ]
+    };
+
+    const config = {
+        type: 'pie',
+        data: data,
+        option: {}
+    };
+  </script>
+
+  <script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+  </script>
+      
 </html>
