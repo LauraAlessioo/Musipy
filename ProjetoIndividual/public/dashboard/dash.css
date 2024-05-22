@@ -541,3 +541,14 @@ body{
     cursor: pointer;
 }
 
+.trash{
+    color: #e1e1e1a7;
+    font-size: 20px;
+}
+.apagar{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

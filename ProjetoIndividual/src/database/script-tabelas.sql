@@ -16,8 +16,13 @@ truncate table usuario;
 
 create table playlist (
 	idPlaylist int primary key auto_increment,
-    nomePlaylist varchar(45),
-    fkUsuario int,
-    
+    nomePlaylist varchar(45)
+);
 
+create table conec (
+fkUsurio int,
+fkPlaylist int,
+primary key (fkUsuario, fkPlaylist),
+foreign key (fkUsuario) references usuario (id),
+foreign key (fkPlaylist) references playlist (idPlaylist)
 );
