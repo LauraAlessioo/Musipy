@@ -13,3 +13,11 @@ CREATE TABLE usuario (
 select * from usuario;	
 
 truncate table usuario;
+
+create table playlist (
+	idPlaylist int primary key auto_increment,
+    nomePlaylist varchar(45),
+    fkUsuario int,
+    
+
+);

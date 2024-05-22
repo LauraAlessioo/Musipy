@@ -26,7 +26,7 @@
                 <div class="side-cont">
                     <div class="opts">
                         <li><a href="dash.html"><i class='bx bxs-home'></i>Inicio</a></li>
-                        <li><i class='bx bx-library'></i>Bibioteca Musical</li>
+                        <li><a href="bibliotecaM.html"><i class='bx bx-library'></i>Bibioteca Musical</a></li>
                         <li><i class='bx bxs-brain'></i>Área Mental</li>
                     </div>
 
@@ -38,7 +38,7 @@
                                 <h3>Suas Playlists</h3>
                             </div>
                             <div class="p2" id="add-playlist-btn">
-                                <i class='bx bx-plus'></i>
+                             
                             </div>
                         </div>
                         <div class="onde-play" id="playlist-container">
@@ -98,21 +98,19 @@
 
 
 
+
                     <div id="espc-playlist">
                         <div class="teto">
                             <div class="contento-teto">
-                                <img id="playlist-image"
-                                    src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg"
-                                    alt="">
+                                <img id="playlist-image">
                                 <div class="teto-desc">
-                                    <span id="playlist-author">Playlist por: Equipe Musipy</span>
-                                    <h1 id="playlist-title">Memorização</h1>
+                                    <span id="playlist-criador"></span>
+                                    <h1 id="playlist-title"></h1>
                                 </div>
                             </div>
                         </div>
                         <div class="display-play" id="display-play">
                             <audio id="audio" src=""></audio>
-                            <!-- musiquinhas will be dynamically added here -->
                         </div>
                     </div>
                 </div>
@@ -140,7 +138,7 @@
                     <div class="repo-func">
                         <i class='bx bx-shuffle'></i>
                         <i class='bx bx-skip-previous'></i>
-                        <div class="circle" id="playOupause">
+                        <div class="circle" id="PouP">
                             <i class='bx bx-play playin' id="playPauseIcon"></i>
                         </div>
                         <i class='bx bx-skip-next'></i>
@@ -160,12 +158,10 @@
     </div>
 </body>
 <script>
-    // Example data structure to store playlists
-    // Example data structure to store playlists
-    var playlists = [
+   var playlists = [
         {
            nomePlaylist: 'Memorização',
-            author: 'Aleatorio',
+            criador: 'Equipe Musipy',
             image: 'https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg',
             musiquinhas: [
                 {nomePlaylist: 'SuperWave', audio: 'Musicas/SuperWave.mp3', image: 'https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg' },
@@ -175,7 +171,7 @@
         },
         {
            nomePlaylist: 'Autismo',
-            author: 'Aleatorio',
+            criador: 'Aleatorio',
             image: 'https://img.elo7.com.br/product/main/48FCCBE/botton-laco-autismo-broche-3-5cm-alfinete-botton.jpg',
             musiquinhas: [
                 {nomePlaylist: 'Cinco Patinhos', audio: 'Musicas/Cinco Patinhos.mp3', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-YQR7x4pmjCLYeSB84PiXP2tLLteV98V8qYLCwF6HpQ&s' },
@@ -186,82 +182,85 @@
     ];
 
 
-    // Function to render playlists to the DOM
-    function renderPlaylists() {
-        var container = document.getElementById('playlist-container');
-        container.innerHTML = '';
 
-        playlists.forEach((playlist, index) => {
-            var div = document.createElement('div');
-            div.className = 'playlist';
-            div.setAttribute('onclick', `openP(${index})`);
-            div.innerHTML = `
-            <div class="musi-esp">
-                <div class="miniatura">
-                    <img src="${playlist.image}" alt="">
+    function conteudoPlay() {
+    var container = document.getElementById('playlist-container');
+    container.innerHTML = '';
+
+    for (var cont = 0; cont < playlists.length; cont++) {
+        
+        var playlist = playlists[cont];
+        
+        var div = document.createElement('div');
+        div.className = 'playlist';
+        div.setAttribute('onclick', `abrirP(${cont})`);
+
+        div.innerHTML = `
+        <div class="musi-esp">
+            <div class="miniatura">
+                <img src="${playlist.image}" alt="">
+            </div>
+            <div class="des-musi">
+                <div class="tt">
+                    <span>${playlist.nomePlaylist}</span>
                 </div>
-                <div class="des-musi">
-                    <div class="tt">
-                        <span>${playlist.nomePlaylist}</span>
-                    </div>
-                    <div class="autor">
-                        <span>Playlist por: <u>${playlist.author}</u></span>
-                    </div>
+                <div class="autor">
+                    <span>Playlist por: <u>${playlist.criador}</u></span>
                 </div>
             </div>
+        </div>
         `;
-            container.appendChild(div);
-        });
+        container.insertAdjacentHTML('beforeend', div.outerHTML);
     }
-    
-
-    // Initial render of playlists
-    renderPlaylists();
-
-    // Function to open a specific playlist
-    function openP(index) {
-        var playlist = playlists[index];
-        var showPlay = document.getElementById('espc-playlist');
-        var main = document.getElementById('main-board');
-        var displayPlay = document.getElementById('display-play');
-
-        main.style.display = "none";
-        showPlay.style.display = "flex";
-
-        document.getElementById('playlist-title').textContent = playlist.nomePlaylist;
-        document.getElementById('playlist-author').textContent = `Playlist por: ${playlist.author}`;
-        document.getElementById('playlist-image').src = playlist.image;
-
-        displayPlay.innerHTML = '';
-        playlist.musiquinhas.forEach((song, index) => {
-            var div = document.createElement('div');
-            div.className = 'playlist';
-            div.innerHTML = `
-            <div class="cont">
-                <span>${index + 1}</span>
-                <img src="${song.image}" alt="" class="audio-selector" data-audio="${song.audio}">
-                <p>${song.nomePlaylist}</p>
-            </div>
-            <div class="autorM"></div>
-            <div class="tempo"></div>
-        `;
-            displayPlay.appendChild(div);
-        });
-
-        // Update audio selector event listeners
-        document.querySelectorAll('.audio-selector').forEach(selector => {
-            selector.addEventListener('click', (event) => {
-                const audioSrc = event.target.getAttribute('data-audio');
-                audio.src = audioSrc;
-                playPauseIcon.className = 'bx bx-play playin';
-                audio.load();
-            });
-        });
-    }
+}
 
     
+conteudoPlay();
+
+    function abrirP(cont) {
+    var playlist = playlists[cont];
+    var showPlay = document.getElementById('espc-playlist');
+    var main = document.getElementById('main-board');
+    var displayPlay = document.getElementById('display-play');
+
+    main.style.display = "none";
+    showPlay.style.display = "flex";
+
+    document.getElementById('playlist-title').textContent = playlist.nomePlaylist;
+    document.getElementById('playlist-criador').textContent = `Playlist por: ${playlist.criador}`;
+    document.getElementById('playlist-image').src = playlist.image;
+
+    displayPlay.innerHTML = '';
+    for (var cont2 = 0; cont2 < playlist.musiquinhas.length; cont2++) {
+        var song = playlist.musiquinhas[cont2];
+        var div = document.createElement('div');
+        div.className = 'playlist';
+        div.innerHTML = `
+        <div class="cont">
+            <span>${cont2 + 1}</span>
+            <img src="${song.image}" alt="" class="audio-selector" data-audio="${song.audio}">
+            <p>${song.nomePlaylist}</p>
+        </div>
+        <div class="autorM"></div>
+        <div class="tempo"></div>
+        `;
+        displayPlay.insertAdjacentHTML('beforeend', div.outerHTML);
+    }
+
+    document.querySelectorAll('.audio-selector').forEach(selector => {
+        selector.addEventListener('click', (event) => {
+            const audioSrc = event.target.getAttribute('data-audio');
+            audio.src = audioSrc;
+            playPauseIcon.className = 'bx bx-play playin';
+            audio.load();
+        });
+    });
+}
+
+    //parte do player
+
     var audio = document.getElementById('audio');
-    var playOupause = document.getElementById('playOupause');
+    var PouP = document.getElementById('PouP');
     var seekBar = document.getElementById('seekBar');
     var tempoAtual = document.getElementById('currentTime');
     var durationSpan = document.getElementById('duration');
@@ -292,7 +291,7 @@
         return minutes + ':' + seconds;
     }
 
-    playOupause.addEventListener('click', () => {
+    PouP.addEventListener('click', () => {
         if (audio.paused) {
             audio.play();
             playPauseIcon.className = 'bx bx-pause playin';
@@ -302,7 +301,16 @@
         }
     });
 
-    // Initial render of playlists
+
+</script>
+<script>
+    function adcPlay(){
+
+
+
+
+    }
+
 
 </script>
 
