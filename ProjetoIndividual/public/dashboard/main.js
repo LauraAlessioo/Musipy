@@ -3,7 +3,7 @@
 
         function adicionarPlaylist(nomePredefinido, nomePlaylist, criador, imagem, musiquinhas) {
             var playlistExistente = playlists.find(playlist => playlist.nomePlaylist === nomePlaylist);
-
+        
             if (playlistExistente) {
                 alert('Essa playlist já está em sua biblioteca!');
             } else {
@@ -14,12 +14,35 @@
                     image: imagem,
                     musiquinhas: musiquinhas
                 };
-
+        
                 playlists.push(novaPlaylist);
                 localStorage.setItem('playlists', JSON.stringify(playlists));
                 conteudoPlay();
+        
+                // Enviar apenas o nome da playlist para o banco de dados
+                enviarPlaylistParaBanco(nomePlaylist);
             }
         }
+        function enviarPlaylistParaBanco(nomePlaylist) {
+            const playlist = {
+                nomePlaylist: nomePlaylist
+            };
+        
+            fetch("/playlist/enviarPlaylistParaBanco", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(playlist)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Playlist enviada com sucesso:', data);
+            })
+            .catch(error => {
+                console.error('Erro ao enviar a playlist:', error);
+            });
+        }        
 
         function conteudoPlay() {
             var container = document.getElementById('playlist-container');
