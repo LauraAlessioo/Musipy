@@ -61,11 +61,23 @@ body{
     justify-content: space-between;
 }
 .ida-volta{
-    width: 150px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#slc_graf{
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    border-bottom: 2px solid #dc67ee;
+    color: #e1e1e1a7;
+    width: 140px;
+    border-radius: 3px;
+}
+#slc_graf option{
+    color: #171626;
 }
 .cicli{
     width: 35px;
@@ -283,6 +295,29 @@ body{
     height: 45%;
     display: flex;
     justify-content: space-around;
+  }
+  .propMental{
+    width: 50%;
+    height: 100%;
+    background: #171626;
+    border-radius: 10px;
+  }
+  .qtdMusi{
+    width: 24%;
+    height: 100%;
+    background: #171626;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .qtdSalva{
+    width: 50%;
+    height: 50%;
+    background: #21203729;
+  }
+  .qtdMusi h2{
+    color: #e1e1e1a7;
   }
   .graf{
     width: 30%;

@@ -1,6 +1,5 @@
 var database = require("../database/config")
 
-
 function adicionarPlaylist(nomePlaylist) {
     var instrucaoSql = `
         INSERT INTO playlist (nomePlaylist) VALUES ('${nomePlaylist}');

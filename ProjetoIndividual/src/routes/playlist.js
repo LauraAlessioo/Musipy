@@ -1,11 +1,11 @@
 var express = require("express");
 var router = express.Router();
 
-var usuarioController = require("../controllers/playlistController");
+var playlistController = require("../controllers/playlistController");
 
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
-router.post("/playlist/enviarPlaylistParaBanco", function (req, res) {
-    usuarioController.cadastrar(req, res);
+router.post("/enviarPlaylistParaBanco", function (req, res) {
+    playlistController.enviarPlaylistParaBanco(req, res);
 })
 
 module.exports = router;

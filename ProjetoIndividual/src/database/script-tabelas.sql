@@ -1,5 +1,4 @@
 CREATE DATABASE  musipy;
-
 use musipy;
 
 
@@ -18,6 +17,9 @@ create table playlist (
 	idPlaylist int primary key auto_increment,
     nomePlaylist varchar(45)
 );
+
+select * from playlist;
+truncate table playlist;
 
 create table conec (
 fkUsurio int,

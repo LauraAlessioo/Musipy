@@ -82,6 +82,9 @@
             playlists.splice(index, 1);
             localStorage.setItem('playlists', JSON.stringify(playlists));
             conteudoPlay();
+
+            
+
         }
 
         function abrirP(cont) {
