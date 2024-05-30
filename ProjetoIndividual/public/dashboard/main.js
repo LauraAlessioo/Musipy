@@ -79,13 +79,28 @@
 
         function deletarPlaylist(index, event) {
             event.stopPropagation();
+            
+            var nomePlaylistDeletada = playlists[index].nomePlaylist; // Obtenha o nome da playlist antes de removê-la
+        
             playlists.splice(index, 1);
             localStorage.setItem('playlists', JSON.stringify(playlists));
-            conteudoPlay();
-
-            
-
+        
+            fetch(`/playlist/deletarPlaylist/${nomePlaylistDeletada}`, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Playlist deletada com sucesso:', data);
+                conteudoPlay();
+            })
+            .catch(error => {
+                console.error('Erro ao deletar a playlist:', error);
+            });
         }
+            
 
         function abrirP(cont) {
             var playlist = playlists[cont];

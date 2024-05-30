@@ -517,7 +517,7 @@ body.dark .main-content{
     }
     .section3{
       width: 100%;
-      position: absolute;
+      position: relative;
       height: 100vh;
       background: url(backs/rest-back.png);
       display: flex;
@@ -537,8 +537,8 @@ body.dark .main-content{
       align-items: center;
   }
   .musi-cardinho{
-    width: 103%;
-    max-width: 35%;
+    width: 100%;
+    max-width: 30%;
     height: 80%;
     border-radius: 25px;
     margin: 0;
@@ -623,9 +623,22 @@ body.dark .main-content{
     width: 42%;
   }
   .text-musi{
-    width: 60%;
+    width: 40%;
     height: 80vh;
-    background: #1395ff65;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  .text-musi h2{
+    font-size: 70px;
+    color: #dc67ee;
+  }
+  .text-musi p{
+    width: 100%;
+    font-size: 22px;
+    background: #0000001c;
+    text-align: justify;
+    color: #e1e1e1;
   }
   #warn{
     color: #fff;
@@ -693,3 +706,24 @@ body.dark .main-content{
       height: 40px;
     }
   }
+  .section4{
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    background: url(backs/rest-back.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+  body.dark .section4{
+    background: url(backs/rest-back-day.png);
+  }
+  .section5{
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    background: url(backs/lastone.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 

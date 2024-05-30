@@ -77,7 +77,8 @@ body{
     border-radius: 3px;
 }
 #slc_graf option{
-    color: #171626;
+    color: #171626; 
+    text-overflow: ellipsis;
 }
 .cicli{
     width: 35px;
@@ -225,6 +226,19 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+.log-out{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    font-size: 32px;
+    color: #e1e1e1a7;
+}
+.log-out i{
+    cursor: pointer;
+    color: #e1e1e1a7;
 }
 .miniatura{
     width: 80px;
@@ -445,6 +459,27 @@ body{
     position: relative;
     bottom: 45px;
 }
+#myChartF{
+    transform: scale(0.79);
+    position: relative;
+    bottom: 45px;
+}
+#myChartP{
+    transform: scale(0.79);
+    position: relative;
+    bottom: 45px;
+}
+#myChartE{
+    transform: scale(0.79);
+    position: relative;
+    bottom: 45px;
+}
+#myChartC{
+    transform: scale(0.79);
+    position: relative;
+    bottom: 45px;
+}
+
 #myChart2{
     position: relative;
     bottom: 20px;
@@ -511,7 +546,7 @@ body{
 }
 
 .save-card{
-    width: 30%;
+    width: 20%;
     height: 250px;
     background: #171626;
     display: flex;
@@ -585,5 +620,65 @@ body{
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+.quiz-card {
+    width: 22%;
+    height: 500px;
+    background: #171626;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 2px #dc67ee9a,
+                1px 1px 10px -4px #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    filter: blur(0.5px);
+    overflow: hidden; 
+}
+
+.quiz-card i {
+    font-size: 200px;
+    color: #dc67ee9a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+
+.quiz-card:hover {
+    transform: scale(1.1);
+    filter: blur(0px);
+    transition: transform 0.5s, filter 0.5s;
+}
+
+.quiz-card:hover i {
+    display: none; 
+}
+
+.quiz-card .cir {
+    font-size: 120px;
+    color: #dc67ee;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    transition: opacity 0.5s; 
+}
+
+.quiz-card:hover .cir {
+    display: block;
+}
+.quiz-card h2{
+    font-size: 35px;
+    color: #e1e1e1a7;
+}
+.maindomain{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
 }

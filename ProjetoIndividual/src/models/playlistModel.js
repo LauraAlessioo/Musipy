@@ -1,4 +1,4 @@
-var database = require("../database/config")
+var database = require("../database/config");
 
 function adicionarPlaylist(nomePlaylist) {
     var instrucaoSql = `
@@ -9,6 +9,16 @@ function adicionarPlaylist(nomePlaylist) {
     return database.executar(instrucaoSql);
 }
 
+function deletarPlaylist(nomePlaylist) {
+    var instrucaoSql = `
+        DELETE FROM playlist WHERE nomePlaylist = '${nomePlaylist}';
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    adicionarPlaylist
+    adicionarPlaylist,
+    deletarPlaylist
 };

@@ -22,9 +22,23 @@ select * from playlist;
 truncate table playlist;
 
 create table conec (
-fkUsurio int,
+fkUsuario int auto_increment,
 fkPlaylist int,
 primary key (fkUsuario, fkPlaylist),
 foreign key (fkUsuario) references usuario (id),
 foreign key (fkPlaylist) references playlist (idPlaylist)
 );
+drop table conec;
+
+INSERT INTO conec (fkUsuario, fkPlaylist) VALUES (1, 1);
+INSERT INTO conec (fkUsuario, fkPlaylist) VALUES (1, 2);
+
+SELECT playlist.nomePlaylist, usuario.nome
+FROM usuario
+JOIN conec ON conec.fkUsuario = usuario.id
+JOIN playlist ON conec.fkPlaylist = playlist.idPlaylist;
+
+
+
+
+

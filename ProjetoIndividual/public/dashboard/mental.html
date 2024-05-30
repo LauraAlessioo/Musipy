@@ -27,7 +27,7 @@
                     <div class="opts">
                         <li><a href="dash.html"><i class='bx bxs-home'></i>Inicio</a></li>
                         <li><a href="bibliotecaM.html"><i class='bx bx-library'></i>Bibioteca Musical</a></li>
-                        <li><a href="mental.html"><i class='bx bxs-brain'></i>Área Mental</a></li>
+                        <li><i class='bx bxs-brain'></i>Área Mental</li>
                     </div>
 
 
@@ -38,11 +38,11 @@
                                 <h3>Suas Playlists</h3>
                             </div>
                             <div class="p2" id="add-playlist-btn">
-                             
+                                <a href="bibliotecaM.html"><i class='bx bx-plus'></i></a>
                             </div>
                         </div>
                         <div class="onde-play" id="playlist-container">
-                            
+                            <!-- Existing playlists will be rendered here -->
                         </div>
                     </div>
                 </div>
@@ -67,34 +67,28 @@
 
 
                     <div class="main-board" id="main-board">
-                        <div class="biblioteca-main" id="biblioteca-main">
-                            <!-- save-card elements here -->
-                            <div class="save-card">
-                                <div class="defini">
-                                    <h3>Playlist</h3>
-                                </div>
-                                <img src="https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg" alt="">
-                                <div class="adc-play" onclick="adicionarPlaylist('Memorização', 'Memorização', 'Equipe Musipy', 'https://st.depositphotos.com/26922084/51538/v/450/depositphotos_515387002-stock-illustration-woman-with-headphones.jpg', [
-                                        { nomeMusica: 'SuperWave', audio: 'Musicas/SuperWave.mp3', image: 'https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg' },
-                                        { nomeMusica: 'Cello Suite No. 1 in G Major', audio: 'Musicas/Memo2.mp3', image: 'https://i.scdn.co/image/ab67616d00001e02261feb89ee859b598bd34a97' }
-                                    ])">
-                                    <i class='bx bx-plus'></i>
-                                </div>
-                            </div>
-                            <div class="save-card">
-                                <div class="defini">
-                                    <h3>Playlist</h3>
-                                </div>
-                                <img src="https://img.elo7.com.br/product/main/48FCCBE/botton-laco-autismo-broche-3-5cm-alfinete-botton.jpg" alt="">
-                                <div class="adc-play"
-                                    onclick="adicionarPlaylist('Autismo', 'Autismo', 'Aleatorio', 'https://img.elo7.com.br/product/main/48FCCBE/botton-laco-autismo-broche-3-5cm-alfinete-botton.jpg', [
-                                        { nomeMusica: 'Cinco Patinhos', audio: 'Musicas/Cinco Patinhos.mp3', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-YQR7x4pmjCLYeSB84PiXP2tLLteV98V8qYLCwF6HpQ&s' },
-                                        { nomeMusica: 'Seu Lobato', audio: 'Musicas/SEU LOBATO.mp3', image: 'https://i.scdn.co/image/ab67616d0000b273d3fcdd3f29c2a854006727aa' },
-                                    ])">
-                                    <i class='bx bx-plus'></i>
-                                </div>
-                            </div>
+                        <div class="maindomain">
+                        <div class="quiz-card">
+                            <h2>Memorização</h2>
+                            <i class='bx bx-brain'></i>
+                            <i class='bx bx-play-circle cir' ></i>
                         </div>
+                        <div class="quiz-card">
+                            <h2>Fala</h2>
+                            <i class='bx bxs-user-voice' ></i>
+                            <i class='bx bx-play-circle cir' ></i>
+                        </div>
+                        <div class="quiz-card">
+                            <h2>Pain Gone</h2>
+                            <i class='bx bx-band-aid' ></i>
+                            <i class='bx bx-play-circle cir' ></i>
+                        </div>
+                        <div class="quiz-card">
+                            <h2>Emocional</h2>
+                            <i class='bx bxs-heart' ></i>
+                            <i class='bx bx-play-circle cir' ></i>
+                        </div>
+                    </div>
                     </div>
 
 
@@ -156,6 +150,4 @@
         </div>
     </div>
 </body>
-<script src="main.js"></script>  
-
-</html>
+<script src="main.js"></script>
