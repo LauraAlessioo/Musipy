@@ -19,19 +19,25 @@ create table playlist (
 );
 
 select * from playlist;
+SELECT COUNT(*) FROM playlist;
 truncate table playlist;
 
-create table conec (
-fkUsuario int auto_increment,
-fkPlaylist int,
-primary key (fkUsuario, fkPlaylist),
-foreign key (fkUsuario) references usuario (id),
-foreign key (fkPlaylist) references playlist (idPlaylist)
+CREATE TABLE conexao (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fkUsuario INT,
+    fkPlaylist INT,
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
+    FOREIGN KEY (fkPlaylist) REFERENCES playlist(idPlaylist)
 );
-drop table conec;
 
-INSERT INTO conec (fkUsuario, fkPlaylist) VALUES (1, 1);
-INSERT INTO conec (fkUsuario, fkPlaylist) VALUES (1, 2);
+create table quiz (
+idQuiz int auto_increment primary key,
+acertos int,
+erros int
+);
+
+drop table conexao;
+
 
 SELECT playlist.nomePlaylist, usuario.nome
 FROM usuario

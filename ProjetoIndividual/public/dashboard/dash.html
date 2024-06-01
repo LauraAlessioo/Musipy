@@ -63,7 +63,6 @@
                                 <option value="fala">Fala</option>
                                 <option value="pg">Pain Gone</option>
                                 <option value="emo">Emocional</option>
-                                <option value="coo">Coordenação Motora</option>
                             </select>
                         </div>
                         <div class="perf">
@@ -93,7 +92,7 @@
                             <div class="propMental"></div>
                             <div class="qtdMusi">
                                 <h2>Você têm:</h2>
-                                <div class="qtdSalva">
+                                <div class="qtdSalva" id="qtdSalva">
 
                                 </div>
                                 <h2>Playlist salvas</h2>
@@ -267,31 +266,6 @@ new Chart(g3, {
     }
 });
 
-const g4 = document.getElementById('myChartC');
-
-new Chart(g4, {
-    type: 'pie',
-    data: {
-        labels: ['Acertos', 'Erros'],
-        datasets: [{
-            label: 'Coordenação Motora',
-            backgroundColor: ['#212037', '#dc67ee'],
-            borderColor: '#0000003a',
-            data: [25, 75],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        plugins: {
-            legend: {
-                labels: {
-                    color: '#fff',
-                },
-            }
-        }
-    }
-});
-
 const ctx2 = document.getElementById('myChart2');
 
 new Chart(ctx2, {
@@ -343,12 +317,6 @@ function mudar(){
         myChartP.style.display = "none"
         myChartC.style.display = "none"
         myChartE.style.display = "block"
-    }else if(tpGraf == "coo"){
-        myChart.style.display = "none"
-        myChartF.style.display = "none"
-        myChartP.style.display = "none"
-        myChartE.style.display = "none"
-        myChartC.style.display = "block"
     }
 }
   </script>

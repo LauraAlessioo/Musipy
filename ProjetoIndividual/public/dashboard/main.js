@@ -102,6 +102,34 @@
         }
             
 
+        function obterQuantidadePlaylists() {
+            fetch("/playlist/obterQuantidadePlaylists")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Não foi possível obter a quantidade de playlists. Tente novamente mais tarde.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.quantidadePlaylists !== undefined) {
+                        console.log("Quantidade de playlists:", data.quantidadePlaylists);
+                        qtdSalva.innerHTML = `<p>${data.quantidadePlaylists}</p>`;
+                    } else {
+                        throw new Error("A quantidade de playlists não foi recebida corretamente.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao obter a quantidade de playlists:", error);
+                    qtdSalva.innerHTML = '<p style="color: #e8e8e8">Não foi possível obter a quantidade de playlists.</p>';
+                });
+        }
+        
+        obterQuantidadePlaylists();
+        
+        
+        
+
+
         function abrirP(cont) {
             var playlist = playlists[cont];
             var showPlay = document.getElementById('espc-playlist');

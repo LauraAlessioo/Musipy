@@ -18,7 +18,22 @@ function deletarPlaylist(nomePlaylist) {
     return database.executar(instrucaoSql);
 }
 
+function obterQuantidadePlaylists() {
+    var instrucaoSql = `SELECT COUNT(*) AS quantidade_playlists FROM playlist`;
+    return database.executar(instrucaoSql);
+}
+function adicionarResultadosQuiz(acertos, totalQuestoes) {
+    var instrucaoSql = `
+        INSERT INTO quiz (acertos, erros) VALUES (${acertos}, ${totalQuestoes});
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     adicionarPlaylist,
-    deletarPlaylist
+    deletarPlaylist,
+    obterQuantidadePlaylists,
+    adicionarResultadosQuiz
 };

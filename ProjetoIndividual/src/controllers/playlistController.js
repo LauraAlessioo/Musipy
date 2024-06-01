@@ -19,7 +19,6 @@ function enviarPlaylistParaBanco(req, res) {
 }
 
 function deletarPlaylist(req, res, nomePlaylist) {
-    // Adicione aqui a lógica para deletar a playlist com o nome fornecido
     playlistModel.deletarPlaylist(nomePlaylist)
         .then(data => {
             console.log('Playlist deletada com sucesso:', data);
@@ -31,7 +30,45 @@ function deletarPlaylist(req, res, nomePlaylist) {
         });
 }
 
+function obterQuantidadePlaylists(req, res) {
+    playlistModel.obterQuantidadePlaylists()
+        .then(data => {
+            if (data && data.length > 0 && data[0].quantidade_playlists !== undefined) {
+                console.log("Quantidade de playlists:", data[0].quantidade_playlists);
+                res.json({ quantidadePlaylists: data[0].quantidade_playlists });
+            } else {
+                console.error("Erro ao obter a quantidade de playlists:", data);
+                res.status(500).json({ error: 'Erro ao obter a quantidade de playlists' });
+            }
+        })
+        .catch(error => {
+            console.error("Erro ao obter a quantidade de playlists:", error);
+            res.status(500).json({ error: 'Erro ao obter a quantidade de playlists' });
+        });
+}
+
+
+function enviarResultadosQuizParaBanco(req, res) {
+    const { acertos, totalQuestoes } = req.body;
+
+    if (acertos === undefined || totalQuestoes === undefined) {
+        return res.status(400).send("Os resultados do quiz estão undefined!");
+    }
+
+    playlistModel.adicionarResultadosQuiz(acertos, totalQuestoes)
+        .then(data => {
+            console.log('Resultados do quiz enviados com sucesso:', data);
+            res.json({ message: 'Resultados do quiz enviados com sucesso!' });
+        })
+        .catch(error => {
+            console.error('Erro ao enviar os resultados do quiz:', error);
+            res.status(500).json({ error: 'Erro ao enviar os resultados do quiz' });
+        });
+}
+
 module.exports = {
     enviarPlaylistParaBanco,
-    deletarPlaylist
+    deletarPlaylist,
+    obterQuantidadePlaylists,
+    enviarResultadosQuizParaBanco
 };

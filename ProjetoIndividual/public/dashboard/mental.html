@@ -11,15 +11,26 @@
 </head>
 
 <body>
-
-
+    <div class="main-quiz" id="mainquiz">
+        <div class="shader-quiz" id="shadinho">
+        <div class="quiz-card" id="quizCard">
+            <div class="beningng">
+                <h1>Memorização</h1>
+            </div>
+            <div id="quiz-container" class="question-container"></div>
+            <div class="prox">
+            <button id="btnProximo" onclick="showNextQuestion()" style="display:none;">Próxima Pergunta</button>
+        </div>
+            <div id="pontos"></div>
+        </div>
+    </div>
+</div>
     <div class="main">
         <div class="comecinho">
             <div class="so-pra-ter">
                 <i class='bx bx-dots-horizontal-rounded'></i>
             </div>
         </div>
-
 
         <div class="content-musi">
             <div class="both">
@@ -29,7 +40,6 @@
                         <li><a href="bibliotecaM.html"><i class='bx bx-library'></i>Bibioteca Musical</a></li>
                         <li><i class='bx bxs-brain'></i>Área Mental</li>
                     </div>
-
 
                     <div class="biblioteca">
                         <div class="introd">
@@ -47,7 +57,6 @@
                     </div>
                 </div>
 
-
                 <div class="real-cont">
                     <div class="header">
                         <div class="ida-volta">
@@ -63,34 +72,30 @@
                         </div>
                     </div>
 
-
-
-
                     <div class="main-board" id="main-board">
                         <div class="maindomain">
-                        <div class="quiz-card">
-                            <h2>Memorização</h2>
-                            <i class='bx bx-brain'></i>
-                            <i class='bx bx-play-circle cir' ></i>
-                        </div>
-                        <div class="quiz-card">
-                            <h2>Fala</h2>
-                            <i class='bx bxs-user-voice' ></i>
-                            <i class='bx bx-play-circle cir' ></i>
-                        </div>
-                        <div class="quiz-card">
-                            <h2>Pain Gone</h2>
-                            <i class='bx bx-band-aid' ></i>
-                            <i class='bx bx-play-circle cir' ></i>
-                        </div>
-                        <div class="quiz-card">
-                            <h2>Emocional</h2>
-                            <i class='bx bxs-heart' ></i>
-                            <i class='bx bx-play-circle cir' ></i>
+                            <div class="quiz-card-display">
+                                <h2>Memorização</h2>
+                                <i class='bx bx-brain'></i>
+                                <i class='bx bx-play-circle cir' onclick="startQuiz()"></i>
+                            </div>
+                            <div class="quiz-card-display">
+                                <h2>Fala</h2>
+                                <i class='bx bxs-user-voice'></i>
+                                <i class='bx bx-play-circle cir'></i>
+                            </div>
+                            <div class="quiz-card-display">
+                                <h2>Pain Gone</h2>
+                                <i class='bx bx-band-aid'></i>
+                                <i class='bx bx-play-circle cir'></i>
+                            </div>
+                            <div class="quiz-card-display">
+                                <h2>Emocional</h2>
+                                <i class='bx bxs-heart'></i>
+                                <i class='bx bx-play-circle cir'></i>
+                            </div>
                         </div>
                     </div>
-                    </div>
-
 
                     <div id="espc-playlist">
                         <div class="teto">
@@ -109,12 +114,10 @@
                 </div>
             </div>
 
-
             <div class="play-cont">
                 <div class="musi-esp">
                     <div class="miniatura">
-                        <img src="https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg"
-                            alt="">
+                        <img src="https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg" alt="">
                     </div>
                     <div class="des-musi">
                         <div class="tt">
@@ -125,7 +128,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div class="main-play">
                     <div class="repo-func">
@@ -144,10 +146,120 @@
                     </div>
                 </div>
 
-
                 <div class="musi-esp"></div>
             </div>
         </div>
     </div>
 </body>
 <script src="main.js"></script>
+
+<script>
+    var questoes = [
+        "Qual das seguintes estratégias é mais eficaz para melhorar a memória na musicoterapia?",
+        "Que tipo de método é útil para organizar informações musicais para facilitar a memorização na musicoterapia?",
+        "Que tipo de atividade musical é benéfica para manter uma memória saudável na musicoterapia?",
+        "Qual dos seguintes fatores pode prejudicar a memória na musicoterapia?"
+    ];
+
+    var opcs = [
+        ["a) Repetição espaçada de melodias e ritmos", "b) Improvisação rápida durante a prática musical", "c) Tentar tocar várias músicas ao mesmo tempo", "d) Ignorar a prática regular de revisão de peças musicais"],
+        ["a) Apenas confiar na capacidade de lembrar notas de curto prazo", "b) Criar mnemônicos musicais, como acrônimos de acordes ou ritmos", "c) Pular partes de uma música consideradas irrelevantes", "d) Não revisar regularmente partituras ou técnicas musicais"],
+        ["a) Evitar desafios musicais complexos", "b) Ficar em casa sem praticar nenhum instrumento", "c) Aprender novas peças musicais regularmente", "d) Não se envolver em atividades musicais que estimulem o cérebro"],
+        ["a) Ter uma boa qualidade de sono", "b) Praticar regularmente exercícios físicos relacionados à música", "c) Lidar com estresse crônico durante as sessões musicais", "d) Consumir moderadamente água durante as práticas musicais"]
+    ];
+
+    var respostaC = ["a) Repetição espaçada de melodias e ritmos", "b) Criar mnemônicos musicais, como acrônimos de acordes ou ritmos", "c) Aprender novas peças musicais regularmente", "c) Lidar com estresse crônico durante as sessões musicais"];
+
+    var aQuestao = 0;
+    var pontos = 0;
+    var respostaSelecionada = false;
+
+    function startQuiz() {
+        var quizCard = document.getElementById('quizCard');
+        var btnProximo = document.getElementById('btnProximo');
+        mainquiz.style.display = 'flex';
+        shadinho.style.display = 'flex';
+        quizCard.style.display = 'flex';
+        btnProximo.style.display = 'inline';
+        aQuestao = 0;
+        pontos = 0;
+        respostaSelecionada = false;
+        showQuestion(aQuestao);
+    }
+
+    function showQuestion(index) {
+        var quizContainer = document.getElementById('quiz-container');
+        if (index < questoes.length) {
+            respostaSelecionada = false;
+            var questionHtml = `<div class="questioneC"><p>${questoes[index]}</p></div>
+                                <div class="questione">`;
+
+            for (var cont = 0; cont < opcs[index].length; cont++) {
+                questionHtml += `<div class="optione" onclick="selectOption(this, '${opcs[index][cont]}')">${opcs[index][cont]}</div>`;
+            }
+            questionHtml += `</div>`;
+            quizContainer.innerHTML = questionHtml;
+        } else {
+            quizContainer.innerHTML = `<div class="acertou">Você acertou ${pontos} de ${questoes.length} perguntas.</div>
+            <img src="imgs/win.png" class="win">
+            <button class="fini" onclick="finalizarEnviarBanco()">Finalizar Quiz</button>`;
+            document.getElementById('btnProximo').style.display = 'none';
+        }
+    }
+
+    function selectOption(option, selectedOption) {
+        var options = document.querySelectorAll('.optione');
+        for (var cont2 = 0; cont2 < options.length; cont2++) {
+            options[cont2].classList.remove('selected');
+        }
+        option.classList.add('selected');
+
+        if (!respostaSelecionada && selectedOption === respostaC[aQuestao]) {
+            pontos++;
+            respostaSelecionada = true;
+        }
+    }
+
+    function showNextQuestion() {
+        var selectedOption = document.querySelector('.optione.selected');
+        if (selectedOption) {
+            aQuestao++;
+            showQuestion(aQuestao);
+        } else {
+            alert("Por favor, selecione uma opção.");
+        }
+    }
+
+    function finalizarEnviarBanco(){
+        var quizCard = document.getElementById('quizCard');
+        quizCard.style.display = 'none';
+        mainquiz.style.display = 'none';
+        shadinho.style.display = 'none';
+
+
+        const erros = questoes.length - pontos;
+
+        const resultadosQuiz = {
+        acertos: pontos,
+        totalQuestoes: erros
+    };
+
+
+    fetch("/playlist/enviarResultadosQuizParaBanco", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(resultadosQuiz)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Resultados do quiz enviados com sucesso:', data);
+    })
+    .catch(error => {
+        console.error('Erro ao enviar os resultados do quiz:', error);
+    });
+}
+</script>
+
+</html>
