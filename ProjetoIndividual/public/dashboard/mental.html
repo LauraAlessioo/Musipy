@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="onde-play" id="playlist-container">
-                            <!-- Existing playlists will be rendered here -->
+                           
                         </div>
                     </div>
                 </div>
@@ -230,20 +230,17 @@
         }
     }
 
-    function finalizarEnviarBanco(){
-        var quizCard = document.getElementById('quizCard');
-        quizCard.style.display = 'none';
-        mainquiz.style.display = 'none';
-        shadinho.style.display = 'none';
+    function finalizarEnviarBanco() {
+    var quizCard = document.getElementById('quizCard');
+    quizCard.style.display = 'none';
+    mainquiz.style.display = 'none';
+    shadinho.style.display = 'none';
+    const erros = questoes.length - pontos;
 
-
-        const erros = questoes.length - pontos;
-
-        const resultadosQuiz = {
+    const resultadosQuiz = {
         acertos: pontos,
         totalQuestoes: erros
     };
-
 
     fetch("/playlist/enviarResultadosQuizParaBanco", {
         method: 'POST',
@@ -260,6 +257,7 @@
         console.error('Erro ao enviar os resultados do quiz:', error);
     });
 }
+
 </script>
 
 </html>

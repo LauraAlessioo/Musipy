@@ -1,7 +1,7 @@
 CREATE DATABASE  musipy;
 use musipy;
 
-
+-- usuario
 CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50),
@@ -13,36 +13,41 @@ select * from usuario;
 
 truncate table usuario;
 
+-- fim usuario
+
+-- playlist
 create table playlist (
 	idPlaylist int primary key auto_increment,
-    nomePlaylist varchar(45)
+    nomePlaylist varchar(45),
+	userId INT,
+	FOREIGN KEY (userId) REFERENCES usuario(id)
 );
-
 select * from playlist;
+
 SELECT COUNT(*) FROM playlist;
+
 truncate table playlist;
 
-CREATE TABLE conexao (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    fkUsuario INT,
-    fkPlaylist INT,
-    FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
-    FOREIGN KEY (fkPlaylist) REFERENCES playlist(idPlaylist)
-);
+-- fim playlist
 
+-- quiz
 create table quiz (
 idQuiz int auto_increment primary key,
 acertos int,
 erros int
 );
 
-drop table conexao;
+select * from quiz;
+
+SELECT CONCAT(ROUND((acertos / 4.0) * 100, 0), '%') AS Acertos,
+CONCAT(ROUND((erros / 4.0) * 100, 0), '%') AS Erros	FROM quiz ORDER BY idQuiz DESC LIMIT 1;
+
+truncate quiz;
+
+-- fim quiz
 
 
-SELECT playlist.nomePlaylist, usuario.nome
-FROM usuario
-JOIN conec ON conec.fkUsuario = usuario.id
-JOIN playlist ON conec.fkPlaylist = playlist.idPlaylist;
+
 
 
 

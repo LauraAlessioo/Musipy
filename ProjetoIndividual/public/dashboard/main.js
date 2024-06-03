@@ -154,8 +154,13 @@
                     <img src="${song.image}" alt="" class="audio-selector" data-audio="${song.audio}">
                     <p>${song.nomeMusica}</p>
                 </div>
-                <div class="autorM"></div>
-                <div class="tempo"></div>
+                <div class="autorM">
+                <h2>Compositor:</h2>
+                <h4><i class='bx bxs-user-circle'></i>${song.autor}</h4>
+                </div>
+                <div class="tempo">
+                <h3><i class='bx bx-time' ></i>${song.tempo}</h3>
+                </div>
                 `;
                 displayPlay.insertAdjacentHTML('beforeend', div.outerHTML);
             }
