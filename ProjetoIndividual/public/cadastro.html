@@ -117,9 +117,9 @@
       confirmacaoSenhaVar == ""
     
     ) {
-      cardErro.style.display = "block";
+      cardErro.style.display = "flex";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "(Atenção!! Todos os campos devem ser preenchidos)";
 
       finalizarAguardar();
       return false;

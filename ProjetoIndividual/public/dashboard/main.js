@@ -80,10 +80,11 @@
         function deletarPlaylist(index, event) {
             event.stopPropagation();
             
-            var nomePlaylistDeletada = playlists[index].nomePlaylist; // Obtenha o nome da playlist antes de removê-la
+            var nomePlaylistDeletada = playlists[index].nomePlaylist;
         
             playlists.splice(index, 1);
             localStorage.setItem('playlists', JSON.stringify(playlists));
+            window.location.reload();
         
             fetch(`/playlist/deletarPlaylist/${nomePlaylistDeletada}`, {
                 method: 'DELETE',
@@ -141,6 +142,8 @@
 
             document.getElementById('playlist-title').textContent = playlist.nomePlaylist;
             document.getElementById('playlist-criador').textContent = `Playlist por: ${playlist.criador}`;
+            document.getElementById('licença').innerHTML = `<br><br> Licença: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>`;
+
             document.getElementById('playlist-image').src = playlist.image;
 
             displayPlay.innerHTML = '';

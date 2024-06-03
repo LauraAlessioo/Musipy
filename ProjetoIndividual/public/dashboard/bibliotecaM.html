@@ -101,14 +101,14 @@
                                 <img src="https://christianherzog.com/wp-content/uploads/2021/07/CHR_4124-300x300.jpg" alt="">
                                 <div class="adc-play"
                                     onclick="adicionarPlaylist('Relax', 'Relax', 'Equipe Musipy', 'https://christianherzog.com/wp-content/uploads/2021/07/CHR_4124-300x300.jpg', [
-                                        { nomeMusica: 'Vibrations', audio: 'Musicas/KaizanBlu - Vibrations.mp3',  autor: 'KaizanBlu', tempo: '2:17', image: 'https://cdn.leroymerlin.com.br/products/papel_de_parede_paisagem_caminho_natureza_sala_adesivo_067p_1567478049_3744_300x300.jpg' },
-                                        { nomeMusica: 'Phases', audio: 'Musicas/KaizanBlu - Phases.mp3',  autor: 'KaizanBlu', tempo: '2:30', image: 'https://cdn.leroymerlin.com.br/products/papel_de_parede_paisagem_caminho_natureza_sala_adesivo_067p_1567478049_3744_300x300.jpg' },
-                                        { nomeMusica: 'Lullaby', audio: 'Musicas/KaizanBlu - Lullaby.mp3',  autor: 'KaizanBlu', tempo: '2:10', image: 'https://cdn.leroymerlin.com.br/products/papel_de_parede_paisagem_caminho_natureza_sala_adesivo_067p_1567478049_3744_300x300.jpg' },
-                                        { nomeMusica: 'Eternal', audio: 'Musicas/KaizanBlu - Eternal.mp3',  autor: 'KaizanBlu', tempo: '1:34', image: 'https://cdn.leroymerlin.com.br/products/papel_de_parede_paisagem_caminho_natureza_sala_adesivo_067p_1567478049_3744_300x300.jpg' },
-                                        { nomeMusica: 'Echoes', audio: 'Musicas/KaizanBlu - Echoes.mp3', autor: 'KaizanBlu', tempo: '2:24', image: 'https://cdn.leroymerlin.com.br/products/papel_de_parede_paisagem_caminho_natureza_sala_adesivo_067p_1567478049_3744_300x300.jpg' },
-                                        { nomeMusica: 'Chimera', audio: 'Musicas/KaizanBlu - Chimera.mp3', autor: 'KaizanBlu', tempo: '1:41', image: 'https://cdn.leroymerlin.com.br/products/papel_de_parede_paisagem_caminho_natureza_sala_adesivo_067p_1567478049_3744_300x300.jpg' },
-                                        { nomeMusica: 'Blue Hour', audio: 'Musicas/KaizanBlu - Blue Hour.mp3', autor: 'KaizanBlu', tempo: '2:11', image: 'https://cdn.leroymerlin.com.br/products/papel_de_parede_paisagem_caminho_natureza_sala_adesivo_067p_1567478049_3744_300x300.jpg' },
-                                        { nomeMusica: 'Straightforward', audio: 'Musicas/A. Cooper - Straightforward.mp3', autor: 'A. Cooper', tempo: '5:23', image: 'https://cdn.leroymerlin.com.br/products/papel_de_parede_paisagem_caminho_natureza_sala_adesivo_067p_1567478049_3744_300x300.jpg' },
+                                        { nomeMusica: 'Vibrations', audio: 'Musicas/KaizanBlu - Vibrations.mp3',  autor: '<a href=\'https://freemusicarchive.org/music/kaizanblu/\'>KaizanBlu</a>', tempo: '2:17', image: 'imgs/Music KizanBlu.jpeg' },
+                                        { nomeMusica: 'Phases', audio: 'Musicas/KaizanBlu - Phases.mp3',  autor: '<a href=\'https://freemusicarchive.org/music/kaizanblu/\'>KaizanBlu</a>', tempo: '2:30', image: 'imgs/Music KizanBlu.jpeg' },
+                                        { nomeMusica: 'Lullaby', audio: 'Musicas/KaizanBlu - Lullaby.mp3',  autor: '<a href=\'https://freemusicarchive.org/music/kaizanblu/\'>KaizanBlu</a>', tempo: '2:10', image: 'imgs/Music KizanBlu.jpeg' },
+                                        { nomeMusica: 'Eternal', audio: 'Musicas/KaizanBlu - Eternal.mp3',  autor: '<a href=\'https://freemusicarchive.org/music/kaizanblu/\'>KaizanBlu</a>', tempo: '1:34', image: 'imgs/Music KizanBlu.jpeg' },
+                                        { nomeMusica: 'Echoes', audio: 'Musicas/KaizanBlu - Echoes.mp3', autor: '<a href=\'https://freemusicarchive.org/music/kaizanblu/\'>KaizanBlu</a>', tempo: '2:24', image: 'imgs/Music KizanBlu.jpeg' },
+                                        { nomeMusica: 'Chimera', audio: 'Musicas/KaizanBlu - Chimera.mp3', autor: '<a href=\'https://freemusicarchive.org/music/kaizanblu/\'>KaizanBlu</a>', tempo: '1:41', image: 'imgs/Music KizanBlu.jpeg' },
+                                        { nomeMusica: 'Blue Hour', audio: 'Musicas/KaizanBlu - Blue Hour.mp3', autor: '<a href=\'https://freemusicarchive.org/music/kaizanblu/\'>KaizanBlu</a>', tempo: '2:11', image: 'imgs/Music KizanBlu.jpeg' },
+                                        { nomeMusica: 'Straightforward', audio: 'Musicas/A. Cooper - Straightforward.mp3', autor: '<a href=\'https://freemusicarchive.org/music/a-cooper/\'>A .Cooper</a>', tempo: '5:23', image: 'imgs/Music KizanBlu.jpeg' },
                                     ])">
                                     <i class='bx bx-plus'></i>
                                 </div>
@@ -124,6 +124,7 @@
                                 <div class="teto-desc">
                                     <span id="playlist-criador"></span>
                                     <h1 id="playlist-title"></h1>
+                                    <p id="licença"></p>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +171,11 @@
                 </div>
 
 
-                <div class="musi-esp"></div>
+                <div class="musi-esp">
+                    <div class="log-out">
+                        <a href="../login.html"><i class='bx bx-log-out'></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

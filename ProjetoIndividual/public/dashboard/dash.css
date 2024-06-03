@@ -115,6 +115,16 @@ body{
     justify-content: space-between;
 
 }
+.teto-desc p{
+    color: #e1e1e1a7;
+    font-size: 20px;
+    height: 100px;
+    margin: 0;
+}
+.teto-desc a{
+    color: #dc67ee;
+    font-size: 18px;
+}
 .main-play{
     width: 500px;
     height: 100%;
@@ -124,8 +134,8 @@ body{
 
 }
 .circle{
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background: #dc67ee;
     display: flex;
     border-radius: 50%;
@@ -312,18 +322,19 @@ body{
   }
   .propMental{
     width: 50%;
-    height: 100%;
+    height: 90%;
     background: #171626;
     border-radius: 10px;
   }
   .qtdMusi{
     width: 24%;
-    height: 100%;
+    height: 90%;
     background: #171626;
     border-radius: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: space-evenly;
   }
   .qtdSalva{
     width: 50%;
@@ -339,6 +350,7 @@ body{
 }
 
   .qtdMusi h2{
+    margin: 0;
     color: #e1e1e1a7;
   }
   .graf{
@@ -404,6 +416,7 @@ body{
 .teto-desc h1{
     font-size: 80px;
     color: #e1e1e1a7;
+    margin: 0;
 }
 .teto-desc span{
     font-weight: 600;
@@ -428,6 +441,8 @@ body{
     margin: 0;
     display: flex;
     align-items: center;
+}
+.autorM a{
     color: #dc67ee;
 }
 .autorM h4 i{
@@ -437,7 +452,7 @@ body{
 }
 .autorM h2{
     margin: 0;
-    font-size: 20px;
+    font-size: 18px;
     color: #e1e1e1a7;
 }
 .cont img{
@@ -526,6 +541,7 @@ body{
     color: #e1e1e1a7;
     font-weight: 600;
     margin-right: 20px;
+    font-size: 15px;
     display: flex;
     align-items: center;
 }
@@ -667,7 +683,7 @@ body{
 }
 .quiz-card-display {
     width: 22%;
-    height: 500px;
+    height: 70%;
     background: #171626;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 2px #dc67ee9a,
@@ -676,13 +692,12 @@ body{
     flex-direction: column;
     align-items: center;
     position: relative;
-    filter: blur(0.5px);
     overflow: hidden; 
 }
 
 .quiz-card-display i {
-    font-size: 200px;
-    color: #dc67ee9a;
+    font-size: 180px;
+    color: #dc67eed9;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -701,7 +716,7 @@ body{
 }
 
 .quiz-card-display .cir {
-    font-size: 120px;
+    font-size: 100px;
     color: #dc67ee;
     cursor: pointer;
     position: absolute;
@@ -715,7 +730,6 @@ body{
     display: block;
 }
 .quiz-card-display h2{
-    font-size: 35px;
     color: #e1e1e1a7;
 }
 .maindomain{
@@ -742,7 +756,6 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 50%;
         justify-content: space-between;
     }
 
@@ -756,14 +769,14 @@ body{
     .optione {
         cursor: pointer;
         width: 95%;
-        max-width: 520px;
+        max-width: 350px;
         height: 50px;
         background: #ff91f6;
         border-radius: 10px;
         margin-top: 10px;
-        padding: 20px;
-        padding-left: 30px;
-        padding-right: 30px;
+        padding: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
         display: flex;
         font-size: 20px;
         align-items: center;

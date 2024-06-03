@@ -31,7 +31,6 @@
                         <li><a href="mental.html"><i class='bx bxs-brain'></i>Área Mental</a></li>
                     </div>
 
-
                     <div class="biblioteca">
                         <div class="introd">
                             <div class="p1">
@@ -110,6 +109,7 @@
                                 <div class="teto-desc">
                                     <span id="playlist-criador"></span>
                                     <h1 id="playlist-title"></h1>
+                                    <p id="licença"></p>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +175,7 @@ new Chart(acert, {
         labels: ['Acertos', 'Erros'],
         datasets: [{
             label: 'Memorização',
-            backgroundColor: ['#212037', '#dc67ee'],
+            backgroundColor: ['#dc67ee', '#212037'],
             borderColor: '#0000003a',
             data: [55, 20],
             borderWidth: 1
@@ -199,7 +199,7 @@ new Chart(g1, {
         labels: ['Acertos', 'Erros'],
         datasets: [{
             label: 'Fala',
-            backgroundColor: ['#212037', '#dc67ee'],
+             backgroundColor: ['#dc67ee', '#212037'],
             borderColor: '#0000003a',
             data: [10, 55],
             borderWidth: 1
@@ -224,7 +224,7 @@ new Chart(g2, {
         labels: ['Acertos', 'Erros'],
         datasets: [{
             label: 'Pain Gone',
-            backgroundColor: ['#212037', '#dc67ee'],
+             backgroundColor: ['#dc67ee', '#212037'],
             borderColor: '#0000003a',
             data: [50, 40],
             borderWidth: 1
@@ -249,7 +249,7 @@ new Chart(g3, {
         labels: ['Acertos', 'Erros'],
         datasets: [{
             label: 'Emocional',
-            backgroundColor: ['#212037', '#dc67ee'],
+             backgroundColor: ['#dc67ee', '#212037'],
             borderColor: '#0000003a',
             data: [65, 35],
             borderWidth: 1
@@ -271,7 +271,7 @@ const ctx2 = document.getElementById('myChart2');
 new Chart(ctx2, {
     type: 'line',
     data: {
-        labels: ['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'],
+        labels: ['1ª Tentativa', '2ª Tentativa', '3ª Tentativa', '4ª Tentativa', '5ª Tentativa', '5ª Tentativa', '6ª Tentativa'],
         datasets: [{
             label: 'Melhora',
             backgroundColor: '#dc67ee',
@@ -280,13 +280,6 @@ new Chart(ctx2, {
             borderWidth: 1
         }
         ]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
     }
 });
 
