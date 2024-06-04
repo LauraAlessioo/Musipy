@@ -22,6 +22,7 @@ create table playlist (
 	userId INT,
 	FOREIGN KEY (userId) REFERENCES usuario(id)
 );
+
 select * from playlist;
 
 SELECT COUNT(*) FROM playlist;
@@ -37,10 +38,11 @@ acertos int,
 erros int
 );
 
+
 select * from quiz;
 
-SELECT CONCAT(ROUND((acertos / 4.0) * 100, 0), '%') AS Acertos,
-CONCAT(ROUND((erros / 4.0) * 100, 0), '%') AS Erros	FROM quiz ORDER BY idQuiz DESC LIMIT 1;
+SELECT ROUND((acertos / 4.0) * 100, 0) AS Acertos,
+ROUND((erros / 4.0) * 100, 0)  AS Erros	FROM quiz ORDER BY idQuiz DESC LIMIT 1;
 
 truncate quiz;
 

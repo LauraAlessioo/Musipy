@@ -71,6 +71,7 @@ function enviarResultadosQuizParaBanco(req, res) {
         });
 }
 
+
 module.exports = {
     enviarPlaylistParaBanco,
     deletarPlaylist,
