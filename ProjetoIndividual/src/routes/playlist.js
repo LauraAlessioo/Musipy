@@ -8,13 +8,14 @@ router.post("/enviarPlaylistParaBanco", function (req, res) {
 });
 
 // Rota para deletar uma playlist
-router.delete("/deletarPlaylist/:nomePlaylist", function (req, res) {
+router.delete("/deletarPlaylist/:userId/:nomePlaylist", function (req, res) {
+    var userId = req.params.userId;
     var nomePlaylist = req.params.nomePlaylist;
-    playlistController.deletarPlaylist(req, res, nomePlaylist);
+    playlistController.deletarPlaylist(req, res, userId, nomePlaylist);
 });
 
 // Rota para obter a quantidade de playlists
-router.get("/obterQuantidadePlaylists", function (req, res) {
+router.get("/obterQuantidadePlaylists/:userId", function (req, res) {
     playlistController.obterQuantidadePlaylists(req, res);
 });
 

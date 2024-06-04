@@ -1,25 +1,25 @@
 var database = require("../database/config");
 
-function adicionarPlaylist(nomePlaylist) {
+function adicionarPlaylist(nomePlaylist, userId) {
     var instrucaoSql = `
-        INSERT INTO playlist (nomePlaylist) VALUES ('${nomePlaylist}');
+        INSERT INTO playlist (nomePlaylist, userId) VALUES ('${nomePlaylist}', '${userId}');
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function deletarPlaylist(nomePlaylist) {
+function deletarPlaylist(userId, nomePlaylist) {
     var instrucaoSql = `
-        DELETE FROM playlist WHERE nomePlaylist = '${nomePlaylist}';
+        DELETE FROM playlist WHERE userId = '${userId}' AND nomePlaylist = '${nomePlaylist}';
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function obterQuantidadePlaylists() {
-    var instrucaoSql = `SELECT COUNT(*) AS quantidade_playlists FROM playlist`;
+function obterQuantidadePlaylists(userId) {
+    var instrucaoSql = `SELECT COUNT(*) AS quantidade_playlists FROM playlist WHERE userId = ${userId}`;
     return database.executar(instrucaoSql);
 }
 function adicionarResultadosQuiz(acertos, totalQuestoes) {

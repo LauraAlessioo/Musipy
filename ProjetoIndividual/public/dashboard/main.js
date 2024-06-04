@@ -1,48 +1,54 @@
+var userId = sessionStorage.ID_USUARIO;
+var playlistsKey = `playlists_${userId}`;
+var playlists = JSON.parse(sessionStorage.getItem(playlistsKey)) || [];
 
-        var playlists = JSON.parse(localStorage.getItem('playlists')) || [];
 
-        function adicionarPlaylist(nomePredefinido, nomePlaylist, criador, imagem, musiquinhas) {
-            var playlistExistente = playlists.find(playlist => playlist.nomePlaylist === nomePlaylist);
+function adicionarPlaylist(nomePredefinido, nomePlaylist, criador, imagem, musiquinhas) {
+    var playlistExistente = playlists.find(playlist => playlist.nomePlaylist === nomePlaylist);
+
+    if (playlistExistente) {
+        alert('Essa playlist já está em sua biblioteca!');
+    } else {
+        var novaPlaylist = {
+            nomePredefinido: nomePredefinido,
+            nomePlaylist: nomePlaylist,
+            criador: criador,
+            image: imagem,
+            musiquinhas: musiquinhas
+        };
+
+        playlists.push(novaPlaylist);
+        sessionStorage.setItem(playlistsKey, JSON.stringify(playlists));
+        conteudoPlay();
+
+        enviarPlaylistParaBanco(nomePlaylist, userId);
+    }
+}
+
         
-            if (playlistExistente) {
-                alert('Essa playlist já está em sua biblioteca!');
-            } else {
-                var novaPlaylist = {
-                    nomePredefinido: nomePredefinido,
-                    nomePlaylist: nomePlaylist,
-                    criador: criador,
-                    image: imagem,
-                    musiquinhas: musiquinhas
-                };
-        
-                playlists.push(novaPlaylist);
-                localStorage.setItem('playlists', JSON.stringify(playlists));
-                conteudoPlay();
-        
-                // Enviar apenas o nome da playlist para o banco de dados
-                enviarPlaylistParaBanco(nomePlaylist);
-            }
-        }
-        function enviarPlaylistParaBanco(nomePlaylist) {
-            const playlist = {
-                nomePlaylist: nomePlaylist
-            };
-        
-            fetch("/playlist/enviarPlaylistParaBanco", {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(playlist)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Playlist enviada com sucesso:', data);
-            })
-            .catch(error => {
-                console.error('Erro ao enviar a playlist:', error);
-            });
-        }        
+function enviarPlaylistParaBanco(nomePlaylist, userId) {
+    const playlist = {
+        nomePlaylist: nomePlaylist,
+        userId: userId
+    };
+    console.log(userId);
+    console.log(nomePlaylist);
+    
+    fetch("/playlist/enviarPlaylistParaBanco", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(playlist)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Playlist enviada com sucesso:', data);
+    })
+    .catch(error => {
+        console.error('Erro ao enviar a playlist:', error);
+    });
+}
 
         function conteudoPlay() {
             var container = document.getElementById('playlist-container');
@@ -81,12 +87,10 @@
             event.stopPropagation();
             
             var nomePlaylistDeletada = playlists[index].nomePlaylist;
-        
-            playlists.splice(index, 1);
-            localStorage.setItem('playlists', JSON.stringify(playlists));
-            window.location.reload();
-        
-            fetch(`/playlist/deletarPlaylist/${nomePlaylistDeletada}`, {
+            var userId = sessionStorage.ID_USUARIO;
+         
+            
+            fetch(`/playlist/deletarPlaylist/${userId}/${nomePlaylistDeletada}`, {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
@@ -95,16 +99,24 @@
             .then(response => response.json())
             .then(data => {
                 console.log('Playlist deletada com sucesso:', data);
+
+                playlists.splice(index, 1);
+                sessionStorage.setItem(playlistsKey, JSON.stringify(playlists));
+                window.location.reload();
+                // Atualiza a interface
                 conteudoPlay();
             })
             .catch(error => {
                 console.error('Erro ao deletar a playlist:', error);
             });
         }
+        
             
+        function obterQuantidadePlaylists(userId) {
 
-        function obterQuantidadePlaylists() {
-            fetch("/playlist/obterQuantidadePlaylists")
+            var userId = sessionStorage.ID_USUARIO;
+
+            fetch(`/playlist/obterQuantidadePlaylists/${userId}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Não foi possível obter a quantidade de playlists. Tente novamente mais tarde.');
@@ -125,8 +137,8 @@
                 });
         }
         
-        obterQuantidadePlaylists();
         
+        obterQuantidadePlaylists(userId);
         
         
 

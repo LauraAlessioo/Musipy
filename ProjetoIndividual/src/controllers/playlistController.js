@@ -1,13 +1,13 @@
 const playlistModel = require('../models/playlistModel');
 
-function enviarPlaylistParaBanco(req, res) {
-    const { nomePlaylist } = req.body;
+const enviarPlaylistParaBanco = (req, res) => {
+    const { nomePlaylist, userId } = req.body;
 
-    if (nomePlaylist === undefined) {
-        return res.status(400).send("O nome da playlist está undefined!");
+    if (!nomePlaylist || !userId) {
+        return res.status(400).send("O nome da playlist ou o ID do usuário está indefinido!");
     }
 
-    playlistModel.adicionarPlaylist(nomePlaylist)
+    playlistModel.adicionarPlaylist(nomePlaylist, userId)
         .then(data => {
             console.log('Playlist enviada com sucesso:', data);
             res.json({ message: 'Playlist enviada com sucesso!' });
@@ -16,10 +16,10 @@ function enviarPlaylistParaBanco(req, res) {
             console.error('Erro ao enviar a playlist:', error);
             res.status(500).json({ error: 'Erro ao enviar a playlist' });
         });
-}
+};
 
-function deletarPlaylist(req, res, nomePlaylist) {
-    playlistModel.deletarPlaylist(nomePlaylist)
+function deletarPlaylist(req, res, userId, nomePlaylist) {
+    playlistModel.deletarPlaylist(userId, nomePlaylist)
         .then(data => {
             console.log('Playlist deletada com sucesso:', data);
             res.json({ message: 'Playlist deletada com sucesso!' });
@@ -31,7 +31,13 @@ function deletarPlaylist(req, res, nomePlaylist) {
 }
 
 function obterQuantidadePlaylists(req, res) {
-    playlistModel.obterQuantidadePlaylists()
+    const userId = req.params.userId;
+
+    if (!userId) {
+        return res.status(400).send("O ID do usuário está indefinido!");
+    }
+
+    playlistModel.obterQuantidadePlaylists(userId)
         .then(data => {
             if (data && data.length > 0 && data[0].quantidade_playlists !== undefined) {
                 console.log("Quantidade de playlists:", data[0].quantidade_playlists);
@@ -46,7 +52,6 @@ function obterQuantidadePlaylists(req, res) {
             res.status(500).json({ error: 'Erro ao obter a quantidade de playlists' });
         });
 }
-
 
 function enviarResultadosQuizParaBanco(req, res) {
     const { acertos, totalQuestoes } = req.body;

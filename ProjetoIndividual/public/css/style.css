@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Tac+One&family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 html {
   height: 100vh;
@@ -111,7 +112,10 @@ body.dark .section2 {
 
 .titulo h2 {
   font-size: 80px;
-  color: #fcfcfc;
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #dc67ee;
 }
 
 .rest-contento {
@@ -575,7 +579,6 @@ body.dark .section3 {
   width: 90%;
   height: 90vh;
   border-radius: 8px;
-  box-shadow: 0 0 12px 8px #dc67ee50;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -583,11 +586,12 @@ body.dark .section3 {
 
 .musi-cardinho {
   width: 100%;
-  max-width: 30%;
+  max-width: 25%;
   height: 80%;
   border-radius: 25px;
   margin: 0;
-  background: #171626;
+  background: #171626b9;
+  box-shadow: 0px 0px 15px 2px #dc67ee88;
 }
 
 .tite {
@@ -645,6 +649,7 @@ body.dark .section3 {
   border-radius: 10px;
   background: #171626;
   display: flex;
+  align-items: center;
 }
 
 .fotu-play img {
@@ -683,15 +688,43 @@ body.dark .section3 {
 }
 
 .text-musi {
-  width: 40%;
+  width: 60%;
   height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: start;
+  justify-content: space-evenly;
+}
+.cardinos{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+.cinhos{
+  width: 100%;
+  max-width: 200px;
+  height: 90%;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #171626bd, #17162696);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cinhos:hover{
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+.cinhos i{
+  font-size: 70px;
+  color: #dc67ee;
 }
 
 .text-musi h2 {
   font-size: 70px;
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   color: #dc67ee;
 }
 
@@ -791,5 +824,72 @@ body.dark .section4 {
   background: url(backs/lastone.png);
   display: flex;
   justify-content: center;
+  align-items: end;
+}
+body.dark .section5{
+  background: url(backs/lastone-day.png);
+}
+.footer{
+  width: 100%;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+}
+.midia{
+  width: 20%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-top: 80px;
+    gap: 50px;
+    border-bottom: 1px solid #dc67ee48;
+}
+.credit{
+  width: 20%;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.credit h3{
+  font-family: "Quantico", sans-serif;
+  margin: 0;
+  color: #e7e7e7;
+}
+.nom-logo{
+  width: 20%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.nom-logo img{
+  width: 180px;
+  height: 180px;
+}
+.nom-logo h2{
+  font-size: 40px;
+  margin: 0;
+  font-family: "Concert One", sans-serif;
+  color: #ffffff;
+    text-shadow: 2px 2px 5px #1395ff, 5px 5px 70px #1395ff;
+}
+.bubble{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #dc67ee;
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.bubble i{
+  color: #171626;
+  font-size: 28px;
 }
