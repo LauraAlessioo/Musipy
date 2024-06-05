@@ -166,7 +166,7 @@ function enviarPlaylistParaBanco(nomePlaylist, userId) {
                 div.innerHTML = `
                 <div class="cont">
                     <span>${cont2 + 1}</span>
-                    <img src="${song.image}" alt="" class="audio-selector" data-audio="${song.audio}">
+                    <img src="${song.image}" alt="" class="audio-selector"  id="play2" data-audio="${song.audio}">
                     <p>${song.nomeMusica}</p>
                 </div>
                 <div class="autorM">

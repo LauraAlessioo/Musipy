@@ -228,6 +228,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    scrollbar-width: none;
 }
 
 .musi-esp{
@@ -251,8 +252,8 @@ body{
     color: #e1e1e1a7;
 }
 .miniatura{
-    width: 80px;
-    height: 80px;
+    width: 65px;
+    height: 65px;
     border-radius: 10px;
     background: #212037;
     display: flex;
@@ -608,6 +609,7 @@ body{
     height: 250px;
     background: #171626;
     display: flex;
+    margin-left: 20px;
     flex-direction: column;
     align-items: center;
     margin-top: 30px;

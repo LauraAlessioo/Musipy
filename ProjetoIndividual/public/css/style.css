@@ -37,12 +37,12 @@ body {
 
 body::-webkit-scrollbar {
   width: 12px;
-  background: #171626; 
+  background: #171626;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #dc67ee; 
-  border-radius: 10px; 
+  background-color: #dc67ee;
+  border-radius: 10px;
   border: 3px solid #171626;
 }
 
@@ -127,10 +127,9 @@ body.dark .section2 {
 
 .titulo h2 {
   font-size: 80px;
-  font-family: "Quantico", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: var(--text-color2);
+  font-family: "Concert One", sans-serif;
+  color: #e7e7e7;
+  text-shadow: 2px 2px 5px #dc67ee, 5px 5px 70px #dc67ee;
 }
 
 .rest-contento {
@@ -710,13 +709,15 @@ body.dark .section3 {
   align-items: start;
   justify-content: space-evenly;
 }
-.cardinos{
+
+.cardinos {
   width: 100%;
   height: 30%;
   display: flex;
   justify-content: space-around;
 }
-.cinhos{
+
+.cinhos {
   width: 100%;
   max-width: 200px;
   height: 90%;
@@ -726,11 +727,13 @@ body.dark .section3 {
   justify-content: center;
   align-items: center;
 }
-.cinhos:hover{
+
+.cinhos:hover {
   transform: scale(1.05);
   transition: 0.5s;
 }
-.cinhos i{
+
+.cinhos i {
   font-size: 70px;
   color: #dc67ee;
 }
@@ -842,10 +845,12 @@ body.dark .section4 {
   justify-content: center;
   align-items: end;
 }
-body.dark .section5{
+
+body.dark .section5 {
   background: url(backs/lastone-day.png);
 }
-.footer{
+
+.footer {
   width: 100%;
   height: 40%;
   display: flex;
@@ -853,29 +858,33 @@ body.dark .section5{
   justify-content: end;
   align-items: center;
 }
-.midia{
+
+.midia {
   width: 35%;
-    height: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    margin-top: 40px;
-    gap: 50px;
-    border-bottom: 1px solid #dc67ee48;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-top: 40px;
+  gap: 50px;
+  border-bottom: 1px solid #dc67ee48;
 }
-.credit{
+
+.credit {
   width: 20%;
   height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.credit h3{
+
+.credit h3 {
   font-family: "Quantico", sans-serif;
   margin: 0;
   color: #e7e7e7;
 }
-.nom-logo{
+
+.nom-logo {
   width: 20%;
   height: 30%;
   display: flex;
@@ -883,17 +892,20 @@ body.dark .section5{
   align-items: center;
   justify-content: center;
 }
-.nom-logo img{
+
+.nom-logo img {
   width: 120px;
 }
-.nom-logo h2{
+
+.nom-logo h2 {
   font-size: 40px;
   margin: 0;
   font-family: "Concert One", sans-serif;
   color: #ffffff;
-    text-shadow: 2px 2px 5px #1395ff, 5px 5px 70px #1395ff;
+  text-shadow: 2px 2px 5px #1395ff, 5px 5px 70px #1395ff;
 }
-.bubble{
+
+.bubble {
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -904,65 +916,154 @@ body.dark .section5{
   justify-content: center;
   align-items: center;
 }
-.bubble i{
+
+.bubble i {
   color: #171626;
   font-size: 28px;
 }
-.mim{
+
+.mim {
   width: 100%;
   height: 100%;
 
 }
-.titulo-mim{
+
+.titulo-mim {
   width: 100%;
   height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.titulo-mim h1{
+
+.titulo-mim h1 {
   margin: 0;
   font-size: 80px;
   font-family: "Concert One", sans-serif;
-  color: #ffffff;
-    text-shadow: 2px 2px 5px #dc67ee, 5px 5px 70px #dc67ee;
+  color: #e7e7e7;
+  text-shadow: 2px 2px 5px #dc67ee, 5px 5px 70px #dc67ee;
 }
-.contento-mim{
+
+.contento-mim {
   width: 100%;
   height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.bico{
+
+.bico {
   width: 2%;
   height: 95%;
   background: #171626;
 }
-.eu-img{
+
+.eu-img {
   max-width: 30%;
   height: 100%;
   background: #000;
   display: flex;
   justify-content: end;
   align-items: center;
-  box-shadow: 10px 10px 20px 20px #00000071;
+  box-shadow: 10px 10px 20px 20px #00000045;
   z-index: 100;
 }
-.eu-img img{
+
+.eu-img img {
   width: 100%;
   height: 100%;
 }
-.about-me{
+
+.about-me {
   width: 50%;
   height: 95%;
   background: #171626;
   display: flex;
-flex-direction: column;
-align-items: center;
- }
-.breve{
+  flex-direction: column;
+  align-items: center;
+}
+
+.breve {
   width: 90%;
   height: 50%;
-  background: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-bottom: 1px solid #dc67ee3e;
+}
+
+.info-mim {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: start;
+  gap: 30px;
+  align-items: center;
+}
+
+.info-mim h3 {
+  color: #dc67ee;
+  font-weight: 300;
+  text-shadow: 2px 2px 5px #ffffff3f, 5px 5px 70px #ffffff3f;
+}
+
+.breve h1 {
+  margin: 0;
+  font-size: 55px;
+  font-family: "Concert One", sans-serif;
+  color: #e7e7e7;
+  text-shadow: 2px 2px 5px #dc67ee, 5px 5px 70px #dc67ee;
+}
+
+.breve p {
+  color: #e7e7e7;
+  font-size: 22px;
+}
+
+.music-afins {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.space-card {
+  width: 90%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mCard {
+  width: 40%;
+  height: 90%;
+
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mCard i {
+  font-size: 30px;
+  color: #dc67ee;
+}
+
+.mCard h3 {
+  margin: 0;
+  padding-left: 10px;
+  color: #dc67ee;
+  text-shadow: 2px 2px 5px #dc67ee3e, 5px 5px 70px #dc67ee3e;
+}
+
+.mCard p {
+  text-align: start;
+  padding: 10px;
+  margin: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: #e7e7e7;
 }
