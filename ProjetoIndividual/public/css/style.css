@@ -934,13 +934,35 @@ body.dark .section5{
   justify-content: center;
   align-items: center;
 }
+.bico{
+  width: 2%;
+  height: 95%;
+  background: #171626;
+}
 .eu-img{
-  width: 25%;
+  max-width: 30%;
   height: 100%;
   background: #000;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  box-shadow: 10px 10px 20px 20px #00000071;
+  z-index: 100;
+}
+.eu-img img{
+  width: 100%;
+  height: 100%;
 }
 .about-me{
   width: 50%;
-  height: 90%;
-  background: #1395ff;
+  height: 95%;
+  background: #171626;
+  display: flex;
+flex-direction: column;
+align-items: center;
+ }
+.breve{
+  width: 90%;
+  height: 50%;
+  background: red;
 }
