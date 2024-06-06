@@ -848,6 +848,7 @@ body.dark .section4 {
 
 body.dark .section5 {
   background: url(backs/lastone-day.png);
+  background-size: cover;
 }
 
 .footer {

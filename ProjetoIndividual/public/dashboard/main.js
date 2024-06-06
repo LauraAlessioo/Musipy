@@ -1,7 +1,7 @@
 var userId = sessionStorage.ID_USUARIO;
 var playlistsKey = `playlists_${userId}`;
+var nomeUsuario =  sessionStorage.NOME_USUARIO;
 var playlists = JSON.parse(sessionStorage.getItem(playlistsKey)) || [];
-
 
 function adicionarPlaylist(nomePredefinido, nomePlaylist, criador, imagem, musiquinhas) {
     var playlistExistente = playlists.find(playlist => playlist.nomePlaylist === nomePlaylist);
@@ -25,7 +25,14 @@ function adicionarPlaylist(nomePredefinido, nomePlaylist, criador, imagem, musiq
     }
 }
 
-        
+
+
+function identificadorNome(nomeUsuario) {
+    const h3Element = document.querySelector('.perf h3');
+    h3Element.textContent = `Bem-vindo(a), ${nomeUsuario}`;
+}
+identificadorNome(nomeUsuario);
+
 function enviarPlaylistParaBanco(nomePlaylist, userId) {
     const playlist = {
         nomePlaylist: nomePlaylist,

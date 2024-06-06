@@ -60,7 +60,7 @@ SELECT (ROUND((acertos / 4.0) * 100, 0)) AS Acertos,
 (ROUND((erros / 4.0) * 100, 0)) AS Erros FROM quiz WHERE fkUsuario = 1 ORDER BY idQuiz DESC LIMIT 1;
 
 select acertos from quiz where fkUsuario = 2 ORDER BY idQuiz DESC LIMIT 5;
-SELECT acertos FROM quiz WHERE fkUsuario = ${userId} ORDER BY idQuiz DESC LIMIT 6;
+
 
 truncate quiz;
 

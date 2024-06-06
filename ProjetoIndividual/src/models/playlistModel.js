@@ -40,7 +40,7 @@ function obterResultadosQuiz(userId) {
     return database.executar(instrucaoSql);
 }
 function obterResultadosQuiz2(userId) {
-    var instrucaoSql = `SELECT acertos FROM quiz WHERE fkUsuario = ${userId} ORDER BY idQuiz DESC LIMIT 6;`;
+    var instrucaoSql = `SELECT acertos FROM quiz WHERE fkUsuario = ${userId} ORDER BY idQuiz LIMIT 6;`;
         
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

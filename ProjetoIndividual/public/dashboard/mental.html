@@ -25,6 +25,55 @@
         </div>
     </div>
 </div>
+
+
+<div class="main-quiz2" id="mainquiz2">
+    <div class="shader-quiz2" id="shadinho2">
+    <div class="quiz-card2" id="quizCard2">
+        <div class="beningng2">
+            <h1>Fala</h1>
+        </div>
+        <div id="quiz-container2" class="question-container2"></div>
+        <div class="prox2">
+        <button id="btnProximo2" onclick="showNextQuestion2()" style="display:none;">Próxima Pergunta</button>
+    </div>
+        <div id="pontos2"></div>
+    </div>
+</div>
+</div>
+
+<div class="main-quiz3" id="mainquiz3">
+    <div class="shader-quiz3" id="shadinho3">
+    <div class="quiz-card3" id="quizCard3">
+        <div class="beningng3">
+            <h1>Pain Gone</h1>
+        </div>
+        <div id="quiz-container3" class="question-container3"></div>
+        <div class="prox3">
+        <button id="btnProximo3" onclick="showNextQuestion3()" style="display:none;">Próxima Pergunta</button>
+    </div>
+        <div id="pontos3"></div>
+    </div>
+</div>
+</div>
+
+<div class="main-quiz4" id="mainquiz4">
+    <div class="shader-quiz4" id="shadinho4">
+    <div class="quiz-card4" id="quizCard4">
+        <div class="beningng4">
+            <h1>Emocional</h1>
+        </div>
+        <div id="quiz-container4" class="question-container4"></div>
+        <div class="prox4">
+        <button id="btnProximo4" onclick="showNextQuestion4()" style="display:none;">Próxima Pergunta</button>
+    </div>
+        <div id="pontos4"></div>
+    </div>
+</div>
+</div>
+
+
+
     <div class="main">
         <div class="comecinho">
             <div class="so-pra-ter">
@@ -68,6 +117,7 @@
                             </div>
                         </div>
                         <div class="perf">
+                            <h3></h3>
                             <i class='bx bxs-user-circle'></i>
                         </div>
                     </div>
@@ -87,12 +137,12 @@
                             <div class="quiz-card-display">
                                 <h2>Pain Gone</h2>
                                 <i class='bx bx-band-aid'></i>
-                                <i class='bx bx-play-circle cir'></i>
+                                <i class='bx bx-play-circle cir' onclick="startQuiz3()"></i>
                             </div>
                             <div class="quiz-card-display">
                                 <h2>Emocional</h2>
                                 <i class='bx bxs-heart'></i>
-                                <i class='bx bx-play-circle cir'></i>
+                                <i class='bx bx-play-circle cir' onclick="startQuiz4()"></i>
                             </div>
                         </div>
                     </div>
@@ -158,8 +208,249 @@
     </div>
 </body>
 <script src="main.js"></script>
+ 
+<!-- Emocional -->
 
-<!-- <script>
+
+
+
+
+<!-- Pain Gone -->
+
+<script>
+    var questoes3 = [
+    "Qual das seguintes atividades é um exemplo de coordenação motora fina, semelhante a tocar instrumentos musicais em musicoterapia?",
+    "Qual parte do cérebro, frequentemente estimulada por atividades musicais em musicoterapia, é mais diretamente responsável pela coordenação motora?",
+    "Qual das seguintes habilidades, assim como dançar ao som da música em musicoterapia, depende mais da coordenação motora grossa?",
+    "Qual é uma maneira comum de melhorar a coordenação motora em crianças, frequentemente utilizada na musicoterapia?"
+];
+
+var opcs3 = [
+    ["A) Jogar futebol", "B) Escrever com um lápis", "C) Pular corda", "D) Nadar"],
+    ["A) Hipotálamo", "B) Córtex pré-frontal", "C) Cerebelo", "D) Amígdala"],
+    ["A) Desenhar um retrato", "B) Construir um quebra-cabeça", "C) Andar de bicicleta", "D) Bordar um tecido"],
+    ["A) Ler livros", "B) Tocar um instrumento musical", "C) Resolver problemas matemáticos", "D) Assistir a vídeos educativos"]
+];
+
+var respostaC3 = ["B) Escrever com um lápis", "C) Cerebelo", "C) Andar de bicicleta", "B) Tocar um instrumento musical"];
+
+var aQuestao = 0;
+var pontos = 0;
+var respostaSelecionada = false;
+
+function startQuiz3() {
+    var quizCard = document.getElementById('quizCard3');
+    var btnProximo = document.getElementById('btnProximo3');
+    var mainquiz = document.getElementById('mainquiz3');
+    var shadinho = document.getElementById('shadinho3');
+    mainquiz.style.display = 'flex';
+    shadinho.style.display = 'flex';
+    quizCard.style.display = 'flex';
+    btnProximo.style.display = 'inline';
+    aQuestao = 0;
+    pontos = 0;
+    respostaSelecionada = false;
+    showQuestion3(aQuestao);
+}
+
+function showQuestion3(index3) {
+    var quizContainer = document.getElementById('quiz-container3');
+    if (index3 < questoes3.length) {
+        respostaSelecionada = false;
+        var questionHtml = `<div class="questioneC"><p>${questoes3[index3]}</p></div>
+                            <div class="questione">`;
+
+        for (var contF = 0; contF < opcs3[index3].length; contF++) {
+            questionHtml += `<div class="optione" onclick="selectOption3(this, '${opcs3[index3][contF]}')">${opcs3[index3][contF]}</div>`;
+        }
+        questionHtml += `</div>`;
+        quizContainer.innerHTML = questionHtml;
+    } else {
+        quizContainer.innerHTML = `<div class="acertou">Você acertou ${pontos} de ${questoes3.length} perguntas.</div>
+        <img src="imgs/win.png" class="win">
+        <button class="fini" onclick="finalizarEnviarBanco3()">Finalizar Quiz</button>`;
+        document.getElementById('btnProximo3').style.display = 'none';
+    }
+}
+
+function selectOption3(option, selectedOption) {
+    var options = document.querySelectorAll('.optione');
+    for (var cont2f = 0; cont2f < options.length; cont2f++) {
+        options[cont2f].classList.remove('selected');
+    }
+    option.classList.add('selected');
+
+    if (!respostaSelecionada && selectedOption === respostaC3[aQuestao]) {
+        pontos++;
+        respostaSelecionada = true;
+    }
+}
+
+function showNextQuestion3() {
+    var selectedOption = document.querySelector('.optione.selected');
+    if (selectedOption) {
+        aQuestao++;
+        showQuestion3(aQuestao);
+    } else {
+        alert("Por favor, selecione uma opção.");
+    }
+}
+
+var userId = sessionStorage.ID_USUARIO;
+var playlistsKey = `playlists_${userId}`;
+
+function finalizarEnviarBanco3() {
+    var quizCard = document.getElementById('quizCard3');
+    var mainquiz = document.getElementById('mainquiz3');
+    var shadinho = document.getElementById('shadinho3');
+    quizCard.style.display = 'none';
+    mainquiz.style.display = 'none';
+    shadinho.style.display = 'none';
+    const erros = questoes3.length - pontos;
+
+    const resultadosQuiz = {
+        acertos: pontos,
+        totalQuestoes: erros,
+        userId: userId
+    };
+
+    fetch("/playlist/enviarResultadosQuizParaBanco3", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(resultadosQuiz)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Resultados do quiz enviados com sucesso:', data);
+    })
+    .catch(error => {
+        console.error('Erro ao enviar os resultados do quiz:', error);
+    });
+}
+
+</script>
+
+<!-- Fala -->
+
+<script>
+    var questoes4 = [
+    "Como a musicoterapia pode influenciar positivamente as emoções dos pacientes?",
+    "Qual é o papel da música na expressão e regulação das emoções durante a musicoterapia?",
+    "Quais tipos de música são frequentemente utilizados na musicoterapia para promover relaxamento e alívio do estresse?",
+    "Como a musicoterapia pode ser adaptada para atender às necessidades emocionais de crianças com autismo?"
+];
+
+var opcs4 = [
+    ["A) Aumentando a pressão arterial", "B) Reduzindo o estresse e a ansiedade", "C) Diminuindo a sensação de fome", "D) Melhorando a coordenação motora"],
+    ["A) Causa descontrole emocional", "B) Não tem efeito nas emoções", "C) Ajuda na expressão e no gerenciamento das emoções", "D) Torna as emoções mais voláteis"],
+    ["A) Música agitada e enérgica", "B) Música alta e estridente", "C) Música clássica e suave", "D) Música pesada e sombria"],
+    ["A) Utilizando apenas músicas agitadas", "B) Integrando elementos visuais e sensoriais com a música", "C) Evitando completamente a música durante a terapia", "D) Limitando o tempo de sessão de musicoterapia"]
+];
+
+var respostaC4 = ["B) Reduzindo o estresse e a ansiedade", "C) Ajuda na expressão e no gerenciamento das emoções", "C) Música clássica e suave", "B) Integrando elementos visuais e sensoriais com a música"];
+
+var aQuestao = 0;
+var pontos = 0;
+var respostaSelecionada = false;
+
+function startQuiz4() {
+    var quizCard = document.getElementById('quizCard4');
+    var btnProximo = document.getElementById('btnProximo4');
+    var mainquiz = document.getElementById('mainquiz4');
+    var shadinho = document.getElementById('shadinho4');
+    mainquiz.style.display = 'flex';
+    shadinho.style.display = 'flex';
+    quizCard.style.display = 'flex';
+    btnProximo.style.display = 'inline';
+    aQuestao = 0;
+    pontos = 0;
+    respostaSelecionada = false;
+    showQuestion4(aQuestao);
+}
+
+function showQuestion4(index4) {
+    var quizContainer = document.getElementById('quiz-container4');
+    if (index4 < questoes4.length) {
+        respostaSelecionada = false;
+        var questionHtml = `<div class="questioneC"><p>${questoes4[index4]}</p></div>
+                            <div class="questione">`;
+
+        for (var contF = 0; contF < opcs4[index4].length; contF++) {
+            questionHtml += `<div class="optione" onclick="selectOption4(this, '${opcs4[index4][contF]}')">${opcs4[index4][contF]}</div>`;
+        }
+        questionHtml += `</div>`;
+        quizContainer.innerHTML = questionHtml;
+    } else {
+        quizContainer.innerHTML = `<div class="acertou">Você acertou ${pontos} de ${questoes4.length} perguntas.</div>
+        <img src="imgs/win.png" class="win">
+        <button class="fini" onclick="finalizarEnviarBanco4()">Finalizar Quiz</button>`;
+        document.getElementById('btnProximo4').style.display = 'none';
+    }
+}
+
+function selectOption4(option, selectedOption) {
+    var options = document.querySelectorAll('.optione');
+    for (var cont4f = 0; cont4f < options.length; cont4f++) {
+        options[cont4f].classList.remove('selected');
+    }
+    option.classList.add('selected');
+
+    if (!respostaSelecionada && selectedOption === respostaC4[aQuestao]) {
+        pontos++;
+        respostaSelecionada = true;
+    }
+}
+
+function showNextQuestion4() {
+    var selectedOption = document.querySelector('.optione.selected');
+    if (selectedOption) {
+        aQuestao++;
+        showQuestion4(aQuestao);
+    } else {
+        alert("Por favor, selecione uma opção.");
+    }
+}
+
+var userId = sessionStorage.ID_USUARIO;
+var playlistsKey = `playlists_${userId}`;
+
+function finalizarEnviarBanco4() {
+    var quizCard = document.getElementById('quizCard4');
+    var mainquiz = document.getElementById('mainquiz4');
+    var shadinho = document.getElementById('shadinho4');
+    quizCard.style.display = 'none';
+    mainquiz.style.display = 'none';
+    shadinho.style.display = 'none';
+    const erros = questoes4.length - pontos;
+
+    const resultadosQuiz = {
+        acertos: pontos,
+        totalQuestoes: erros,
+        userId: userId
+    };
+
+    fetch("/playlist/enviarResultadosQuizParaBanco4", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(resultadosQuiz)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Resultados do quiz enviados com sucesso:', data);
+    })
+    .catch(error => {
+        console.error('Erro ao enviar os resultados do quiz:', error);
+    });
+}
+
+</script>
+
+
+<script>
     var questoes2 = [
     "Como a musicoterapia pode ajudar na melhoria da articulação da fala em pacientes?",
     "De que maneira a entonação musical pode influenciar a fala durante a musicoterapia?",
@@ -181,8 +472,10 @@ var pontos = 0;
 var respostaSelecionada = false;
 
 function startQuiz2() {
-    var quizCard = document.getElementById('quizCard');
-    var btnProximo = document.getElementById('btnProximo');
+    var quizCard = document.getElementById('quizCard2');
+    var btnProximo = document.getElementById('btnProximo2');
+    var mainquiz = document.getElementById('mainquiz2');
+    var shadinho = document.getElementById('shadinho2');
     mainquiz.style.display = 'flex';
     shadinho.style.display = 'flex';
     quizCard.style.display = 'flex';
@@ -194,7 +487,7 @@ function startQuiz2() {
 }
 
 function showQuestion2(index2) {
-    var quizContainer = document.getElementById('quiz-container');
+    var quizContainer = document.getElementById('quiz-container2');
     if (index2 < questoes2.length) {
         respostaSelecionada = false;
         var questionHtml = `<div class="questioneC"><p>${questoes2[index2]}</p></div>
@@ -209,7 +502,7 @@ function showQuestion2(index2) {
         quizContainer.innerHTML = `<div class="acertou">Você acertou ${pontos} de ${questoes2.length} perguntas.</div>
         <img src="imgs/win.png" class="win">
         <button class="fini" onclick="finalizarEnviarBanco2()">Finalizar Quiz</button>`;
-        document.getElementById('btnProximo').style.display = 'none';
+        document.getElementById('btnProximo2').style.display = 'none';
     }
 }
 
@@ -240,7 +533,9 @@ var userId = sessionStorage.ID_USUARIO;
 var playlistsKey = `playlists_${userId}`;
 
 function finalizarEnviarBanco2() {
-    var quizCard = document.getElementById('quizCard');
+    var quizCard = document.getElementById('quizCard2');
+    var mainquiz = document.getElementById('mainquiz2');
+    var shadinho = document.getElementById('shadinho2');
     quizCard.style.display = 'none';
     mainquiz.style.display = 'none';
     shadinho.style.display = 'none';
@@ -267,9 +562,9 @@ function finalizarEnviarBanco2() {
         console.error('Erro ao enviar os resultados do quiz:', error);
     });
 }
-</script> -->
+</script>
 
-
+<!-- Memorização -->
 
 <script>
     var questoes = [
