@@ -54,13 +54,13 @@ function obterQuantidadePlaylists(req, res) {
 }
 
 function enviarResultadosQuizParaBanco(req, res) {
-    const { acertos, totalQuestoes } = req.body;
+    const { acertos, totalQuestoes, userId} = req.body;
 
-    if (acertos === undefined || totalQuestoes === undefined) {
+    if (acertos === undefined || totalQuestoes === undefined || userId === undefined) {
         return res.status(400).send("Os resultados do quiz estão undefined!");
     }
 
-    playlistModel.adicionarResultadosQuiz(acertos, totalQuestoes)
+    playlistModel.adicionarResultadosQuiz(acertos, totalQuestoes, userId)
         .then(data => {
             console.log('Resultados do quiz enviados com sucesso:', data);
             res.json({ message: 'Resultados do quiz enviados com sucesso!' });
@@ -72,9 +72,54 @@ function enviarResultadosQuizParaBanco(req, res) {
 }
 
 
+function obterResultadosQuiz(req, res, userId) {
+    if (!userId) {
+        return res.status(400).send("O ID do usuário está indefinido!");
+    }
+
+    playlistModel.obterResultadosQuiz(userId)
+        .then(data => {
+            if (data && data.length > 0) {
+                console.log('Resultados do quiz obtidos com sucesso:', data);
+                res.json(data[0]); // Enviar apenas o primeiro resultado
+            } else {
+                res.status(404).json({ error: 'Dados não encontrados' });
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao obter os resultados do quiz:', error);
+            res.status(500).json({ error: 'Erro ao obter os resultados do quiz' });
+        });
+}
+
+function obterResultadosQuiz2(req, res, userId) {
+    playlistModel.obterResultadosQuiz2(userId)
+        .then(data => {
+            if (data || data.length > 0) {
+
+                const acertos = [];
+                for (let i = 0; i < data.length; i++) {
+                    acertos.push(data[i].acertos);
+                }
+                console.log('Resultados do quiz obtidos com sucesso:', acertos);
+                // Envia os dados de acertos no formato esperado pelo frontend
+                res.json({ acertos: acertos });
+            } else {
+                res.status(404).json({ error: 'Dados não encontrados' });
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao obter os resultados do quiz:', error);
+            res.status(500).json({ error: 'Erro ao obter os resultados do quiz' });
+        });
+}
+
+
 module.exports = {
     enviarPlaylistParaBanco,
     deletarPlaylist,
     obterQuantidadePlaylists,
-    enviarResultadosQuizParaBanco
+    enviarResultadosQuizParaBanco,
+    obterResultadosQuiz,
+    obterResultadosQuiz2
 };

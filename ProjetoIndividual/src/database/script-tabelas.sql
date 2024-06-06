@@ -22,10 +22,9 @@ create table playlist (
 	userId INT,
 	FOREIGN KEY (userId) REFERENCES usuario(id)
 );
-
 select * from playlist;
 
-SELECT COUNT(*) FROM playlist;
+SELECT COUNT(*) FROM playlist WHERE userId = 1;
 
 truncate table playlist;
 
@@ -35,14 +34,33 @@ truncate table playlist;
 create table quiz (
 idQuiz int auto_increment primary key,
 acertos int,
-erros int
+erros int,
+fkUsuario int,
+	FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
 );
+
+-- create table quizFala (
+-- idQuiz int auto_increment primary key,
+-- acertosF int,
+-- errosF int,
+-- fkUsuarioF int,
+-- FOREIGN KEY (fkUsuarioF) REFERENCES usuario(id)
+-- );
+-- drop table quizFala;
+
+
 
 
 select * from quiz;
 
-SELECT ROUND((acertos / 4.0) * 100, 0) AS Acertos,
-ROUND((erros / 4.0) * 100, 0)  AS Erros	FROM quiz ORDER BY idQuiz DESC LIMIT 1;
+SELECT (ROUND((acertos / 4.0) * 100, 0)) AS Acertos,
+(ROUND((erros / 4.0) * 100, 0)) AS Erros FROM quiz ORDER BY idQuiz DESC LIMIT 1;
+
+SELECT (ROUND((acertos / 4.0) * 100, 0)) AS Acertos,
+(ROUND((erros / 4.0) * 100, 0)) AS Erros FROM quiz WHERE fkUsuario = 1 ORDER BY idQuiz DESC LIMIT 1;
+
+select acertos from quiz where fkUsuario = 2 ORDER BY idQuiz DESC LIMIT 5;
+SELECT acertos FROM quiz WHERE fkUsuario = ${userId} ORDER BY idQuiz DESC LIMIT 6;
 
 truncate quiz;
 

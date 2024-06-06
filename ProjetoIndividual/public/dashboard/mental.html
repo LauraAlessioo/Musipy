@@ -82,7 +82,7 @@
                             <div class="quiz-card-display">
                                 <h2>Fala</h2>
                                 <i class='bx bxs-user-voice'></i>
-                                <i class='bx bx-play-circle cir'></i>
+                                <i class='bx bx-play-circle cir' onclick="startQuiz2()"></i>
                             </div>
                             <div class="quiz-card-display">
                                 <h2>Pain Gone</h2>
@@ -158,6 +158,118 @@
     </div>
 </body>
 <script src="main.js"></script>
+
+<!-- <script>
+    var questoes2 = [
+    "Como a musicoterapia pode ajudar na melhoria da articulação da fala em pacientes?",
+    "De que maneira a entonação musical pode influenciar a fala durante a musicoterapia?",
+    "Qual é a relação entre ritmo musical e fluência da fala em musicoterapia?",
+    "Como a musicoterapia pode ser usada para tratar distúrbios de fala em crianças?"
+];
+
+var opcs2 = [
+    ["A) Aumentando o vocabulário do paciente", "B) Estimulando a produção de sons e palavras através do ritmo e melodia", "C) Ensinando novas línguas ao paciente", "D) Fornecendo um ambiente silencioso para prática de fala"],
+    ["A) Melhora a memorização de palavras e frases", "B) Auxilia na modulação da voz para expressar emoções e intenções", "C) Torna a voz do paciente mais suave", "D) Faz o paciente falar mais rápido"],
+    ["A) Ritmos rápidos sempre melhoram a fluência da fala", "B) O ritmo musical pode ajudar a organizar e controlar o fluxo da fala", "C) Ritmos lentos são melhores para todas as terapias de fala", "D) Não há relação significativa entre ritmo musical e fluência da fala"],
+    ["A) Utilizando canções simples para melhorar a pronúncia e a articulação", "B) Focando em exercícios de escrita de música", "C) Ensaiando discursos longos com as crianças", "D) Evitando qualquer forma de ritmo ou melodia"]
+];
+
+var respostaC2 = ["B) Estimulando a produção de sons e palavras através do ritmo e melodia", "B) Auxilia na modulação da voz para expressar emoções e intenções", "B) O ritmo musical pode ajudar a organizar e controlar o fluxo da fala", "A) Utilizando canções simples para melhorar a pronúncia e a articulação"];
+
+var aQuestao = 0;
+var pontos = 0;
+var respostaSelecionada = false;
+
+function startQuiz2() {
+    var quizCard = document.getElementById('quizCard');
+    var btnProximo = document.getElementById('btnProximo');
+    mainquiz.style.display = 'flex';
+    shadinho.style.display = 'flex';
+    quizCard.style.display = 'flex';
+    btnProximo.style.display = 'inline';
+    aQuestao = 0;
+    pontos = 0;
+    respostaSelecionada = false;
+    showQuestion2(aQuestao);
+}
+
+function showQuestion2(index2) {
+    var quizContainer = document.getElementById('quiz-container');
+    if (index2 < questoes2.length) {
+        respostaSelecionada = false;
+        var questionHtml = `<div class="questioneC"><p>${questoes2[index2]}</p></div>
+                            <div class="questione">`;
+
+        for (var contF = 0; contF < opcs2[index2].length; contF++) {
+            questionHtml += `<div class="optione" onclick="selectOption2(this, '${opcs2[index2][contF]}')">${opcs2[index2][contF]}</div>`;
+        }
+        questionHtml += `</div>`;
+        quizContainer.innerHTML = questionHtml;
+    } else {
+        quizContainer.innerHTML = `<div class="acertou">Você acertou ${pontos} de ${questoes2.length} perguntas.</div>
+        <img src="imgs/win.png" class="win">
+        <button class="fini" onclick="finalizarEnviarBanco2()">Finalizar Quiz</button>`;
+        document.getElementById('btnProximo').style.display = 'none';
+    }
+}
+
+function selectOption2(option, selectedOption) {
+    var options = document.querySelectorAll('.optione');
+    for (var cont2f = 0; cont2f < options.length; cont2f++) {
+        options[cont2f].classList.remove('selected');
+    }
+    option.classList.add('selected');
+
+    if (!respostaSelecionada && selectedOption === respostaC2[aQuestao]) {
+        pontos++;
+        respostaSelecionada = true;
+    }
+}
+
+function showNextQuestion2() {
+    var selectedOption = document.querySelector('.optione.selected');
+    if (selectedOption) {
+        aQuestao++;
+        showQuestion2(aQuestao);
+    } else {
+        alert("Por favor, selecione uma opção.");
+    }
+}
+
+var userId = sessionStorage.ID_USUARIO;
+var playlistsKey = `playlists_${userId}`;
+
+function finalizarEnviarBanco2() {
+    var quizCard = document.getElementById('quizCard');
+    quizCard.style.display = 'none';
+    mainquiz.style.display = 'none';
+    shadinho.style.display = 'none';
+    const erros = questoes2.length - pontos;
+
+    const resultadosQuiz = {
+        acertos: pontos,
+        totalQuestoes: erros,
+        userId: userId
+    };
+
+    fetch("/playlist/enviarResultadosQuizParaBanco2", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(resultadosQuiz)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Resultados do quiz enviados com sucesso:', data);
+    })
+    .catch(error => {
+        console.error('Erro ao enviar os resultados do quiz:', error);
+    });
+}
+</script> -->
+
+
 
 <script>
     var questoes = [
@@ -236,7 +348,10 @@
         }
     }
 
-    function finalizarEnviarBanco() {
+    var userId = sessionStorage.ID_USUARIO;
+    var playlistsKey = `playlists_${userId}`;
+
+    function finalizarEnviarBanco(fkUsuario) {
     var quizCard = document.getElementById('quizCard');
     quizCard.style.display = 'none';
     mainquiz.style.display = 'none';
@@ -245,7 +360,8 @@
 
     const resultadosQuiz = {
         acertos: pontos,
-        totalQuestoes: erros
+        totalQuestoes: erros,
+        userId: userId
     };
 
     fetch("/playlist/enviarResultadosQuizParaBanco", {

@@ -88,7 +88,11 @@
                             </div>
                         </div>
                         <div class="display-graf">
-                            <div class="propMental"></div>
+                            <div class="propMental">
+                                <h1>Conheça o local onde você testa o seu potêncial!</h1>
+                                <img src="imgs/win.png" alt="">
+                                <a href="mental.html"><button>Ir Para Área Mental!</button></a>
+                            </div>
                             <div class="qtdMusi">
                                 <h2>Você têm:</h2>
                                 <div class="qtdSalva" id="qtdSalva">
@@ -165,163 +169,5 @@
         </div>
     </div>
 </body>
-<script src="main.js"></script>
-<script>
-
-
-
- const acert = document.getElementById('myChart');
-
-new Chart(acert, {
-    type: 'pie',
-    data: {
-        labels: ['Acertos', 'Erros'],
-        datasets: [{
-            label: 'Memorização',
-            backgroundColor: ['#dc67ee', '#212037'],
-            borderColor: '#0000003a',
-            data: [55, 20],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        plugins: {
-            legend: {
-                labels: {
-                    color: '#fff',
-                },
-            }
-        }
-    }
-});
-
-
-
-
-
-
-
-const g1 = document.getElementById('myChartF');
-
-new Chart(g1, {
-    type: 'pie',
-    data: {
-        labels: ['Acertos', 'Erros'],
-        datasets: [{
-            label: 'Fala',
-             backgroundColor: ['#dc67ee', '#212037'],
-            borderColor: '#0000003a',
-            data: [10, 55],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        plugins: {
-            legend: {
-                labels: {
-                    color: '#fff',
-                },
-            }
-        }
-    }
-});
-
-const g2 = document.getElementById('myChartP');
-
-new Chart(g2, {
-    type: 'pie',
-    data: {
-        labels: ['Acertos', 'Erros'],
-        datasets: [{
-            label: 'Pain Gone',
-             backgroundColor: ['#dc67ee', '#212037'],
-            borderColor: '#0000003a',
-            data: [50, 40],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        plugins: {
-            legend: {
-                labels: {
-                    color: '#fff',
-                },
-            }
-        }
-    }
-});
-
-const g3 = document.getElementById('myChartE');
-
-new Chart(g3, {
-    type: 'pie',
-    data: {
-        labels: ['Acertos', 'Erros'],
-        datasets: [{
-            label: 'Emocional',
-             backgroundColor: ['#dc67ee', '#212037'],
-            borderColor: '#0000003a',
-            data: [65, 35],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        plugins: {
-            legend: {
-                labels: {
-                    color: '#fff',
-                },
-            }
-        }
-    }
-});
-
-const ctx2 = document.getElementById('myChart2');
-
-new Chart(ctx2, {
-    type: 'line',
-    data: {
-        labels: ['1ª Tentativa', '2ª Tentativa', '3ª Tentativa', '4ª Tentativa', '5ª Tentativa', '5ª Tentativa', '6ª Tentativa'],
-        datasets: [{
-            label: 'Melhora',
-            backgroundColor: '#dc67ee',
-            borderColor: '#dc67ee',
-            data: [3.2, 1.6, 3.9, 4.0, 2.0, 1.2, 3.6],
-            borderWidth: 1
-        }
-        ]
-    }
-});
-
-function mudar(){
-    var tpGraf = slc_graf.value;
-
-    if(tpGraf == "memo"){
-        myChartE.style.display = "none"
-        myChartP.style.display = "none"
-        myChartC.style.display = "none"
-        myChartF.style.display = "none"
-        myChart.style.display = "block"
-    }else if(tpGraf == "fala"){
-        myChart.style.display = "none"
-        myChartP.style.display = "none"
-        myChartE.style.display = "none"
-        myChartC.style.display = "none"
-        myChartF.style.display = "block"
-    }else if(tpGraf == "pg"){
-        myChart.style.display = "none"
-        myChartF.style.display = "none"
-        myChartE.style.display = "none"
-        myChartC.style.display = "none"
-        myChartP.style.display = "block"
-    }else if(tpGraf == "emo"){
-        myChart.style.display = "none"
-        myChartF.style.display = "none"
-        myChartP.style.display = "none"
-        myChartC.style.display = "none"
-        myChartE.style.display = "block"
-    }
-}
-  </script>
-      
+<script src="main.js"></script>       
 </html>

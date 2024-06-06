@@ -23,4 +23,19 @@ router.post("/enviarResultadosQuizParaBanco", function (req, res) {
     playlistController.enviarResultadosQuizParaBanco(req, res);
 });
 
+router.get('/obterResultadosQuiz/:userId', function (req, res) {
+    const userId = req.params.userId;
+    playlistController.obterResultadosQuiz(req, res, userId);
+});
+
+router.get('/obterResultadosQuiz/:userId', function (req, res) {
+    const userId = req.params.userId;
+    playlistController.obterResultadosQuiz(req, res, userId);
+});
+
+router.get('/obterResultadosQuiz2/:userId', function (req, res) {
+    const userId = req.params.userId;
+    playlistController.obterResultadosQuiz2(req, res, userId);
+});
+
 module.exports = router;

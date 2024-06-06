@@ -326,6 +326,36 @@ body{
     height: 90%;
     background: #171626;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .propMental button{
+    width: 200px;
+    height: 40px;
+    border: none;
+    color: #e7e7e7;
+    background: #dc67ee;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    bottom: 20px;
+  }
+  .propMental button:hover{
+    transform: scale(1.1);
+    background: #c74eb3;
+    transition: 0.5s;
+  }
+  .propMental img{
+    width: 250px;
+    position: relative;
+    bottom: 20px;
+    right: 20px;
+  }
+  .propMental h1{
+    margin: 0;
+    color: #e5e5e5;
   }
   .qtdMusi{
     width: 24%;

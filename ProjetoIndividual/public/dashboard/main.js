@@ -233,3 +233,216 @@ function enviarPlaylistParaBanco(nomePlaylist, userId) {
         });
 
         conteudoPlay();
+
+        
+        function atualizarGraficos(userId) {
+            
+            if (!userId) {
+                console.error("ID do usuário não definido!");
+                return;
+            }
+        
+            fetch(`/playlist/obterResultadosQuiz/${userId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao obter dados do servidor');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.Acertos !== undefined && data.Erros !== undefined) {
+                        atualizarGraficoAcertosErros(data.Acertos, data.Erros);
+                    } else {
+                        throw new Error("Dados de acertos e erros não foram recebidos corretamente.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao atualizar os gráficos:", error);
+                });
+        }
+        
+        function atualizarGraficoAcertosErros(acertos, erros) {
+            const data = [acertos, erros];
+            myChart.data.datasets[0].data = data;
+            myChart.update();
+        }    
+
+        atualizarGraficos(userId);
+        
+        
+        const acert = document.getElementById('myChart');
+        
+        const myChart = new Chart(acert, {
+            type: 'pie',
+            data: {
+                labels: ['Acertos', 'Erros'],
+                datasets: [{
+                    label: 'Memorização',
+                    backgroundColor: ['#dc67ee', '#212037'],
+                    borderColor: '#0000003a',
+                    data: [0, 0],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#fff',
+                        },
+                    }
+                }
+            }
+        });
+
+        function atualizarGraficos2(userId) {
+            if (!userId) {
+                console.error("ID do usuário não definido!");
+                return;
+            }
+        
+            fetch(`/playlist/obterResultadosQuiz2/${userId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao obter dados do servidor');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Dados recebidos:", data);  // Log para verificar os dados recebidos
+                    if (data.acertos !== undefined) {
+                        atualizarGraficoAcertos2(data.acertos);
+                    } else {
+                        throw new Error("Dados de acertos não foram recebidos corretamente.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao atualizar os gráficos:", error);
+                });
+        }
+        
+        function atualizarGraficoAcertos2(acertos) {
+            myChart2.data.datasets[0].data = acertos;
+            myChart2.update();
+        }    
+        
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        
+        const myChart2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['1ª Tentativa', '2ª Tentativa', '3ª Tentativa', '4ª Tentativa', '5ª Tentativa', '6ª Tentativa'],
+                datasets: [{
+                    label: 'Acertos',
+                    backgroundColor: '#dc67ee',
+                    borderColor: '#dc67ee',
+                    data: [],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        atualizarGraficos2(userId);
+        
+        
+        const g1 = document.getElementById('myChartF');
+
+        new Chart(g1, {
+            type: 'pie',
+            data: {
+                labels: ['Acertos', 'Erros'],
+                datasets: [{
+                    label: 'Fala',
+                     backgroundColor: ['#dc67ee', '#212037'],
+                    borderColor: '#0000003a',
+                    data: [10, 55],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#fff',
+                        },
+                    }
+                }
+            }
+        });
+        
+        const g2 = document.getElementById('myChartP');
+        
+        new Chart(g2, {
+            type: 'pie',
+            data: {
+                labels: ['Acertos', 'Erros'],
+                datasets: [{
+                    label: 'Pain Gone',
+                     backgroundColor: ['#dc67ee', '#212037'],
+                    borderColor: '#0000003a',
+                    data: [50, 40],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#fff',
+                        },
+                    }
+                }
+            }
+        });
+        
+        const g3 = document.getElementById('myChartE');
+        
+        new Chart(g3, {
+            type: 'pie',
+            data: {
+                labels: ['Acertos', 'Erros'],
+                datasets: [{
+                    label: 'Emocional',
+                     backgroundColor: ['#dc67ee', '#212037'],
+                    borderColor: '#0000003a',
+                    data: [65, 35],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#fff',
+                        },
+                    }
+                }
+            }
+        });
+        
+        function mudar() {
+            const tpGraf = slc_graf.value;
+        
+           var c1 = document.getElementById('myChart').style.display = "none";
+           var c2 = document.getElementById('myChartF').style.display = "none";
+           var c3 = document.getElementById('myChartP').style.display = "none";
+           var c4 = document.getElementById('myChartE').style.display = "none";
+           var c5 = document.getElementById('myChartC').style.display = "none";
+        
+            if (tpGraf == "memo") {
+                document.getElementById('myChart').style.display = "block";
+            } else if (tpGraf == "fala") {
+                document.getElementById('myChartF').style.display = "block";
+            } else if (tpGraf == "pg") {
+                document.getElementById('myChartP').style.display = "block";
+            } else if (tpGraf == "emo") {
+                document.getElementById('myChartE').style.display = "block";
+            }
+        }
