@@ -22,15 +22,29 @@ router.get("/obterQuantidadePlaylists/:userId", function (req, res) {
 router.post("/enviarResultadosQuizParaBanco", function (req, res) {
     playlistController.enviarResultadosQuizParaBanco(req, res);
 });
+router.post("/enviarResultadosQuizParaBanco2", function (req, res) {
+    playlistController.enviarResultadosQuizParaBanco2(req, res);
+});
+
+router.post("/enviarResultadosQuizParaBanco3", function (req, res) {
+    playlistController.enviarResultadosQuizParaBanco3(req, res);
+});
+
+
 
 router.get('/obterResultadosQuiz/:userId', function (req, res) {
     const userId = req.params.userId;
     playlistController.obterResultadosQuiz(req, res, userId);
 });
 
-router.get('/obterResultadosQuiz/:userId', function (req, res) {
+router.get('/obterResultadosQuizF/:userId', function (req, res) {
     const userId = req.params.userId;
-    playlistController.obterResultadosQuiz(req, res, userId);
+    playlistController.obterResultadosQuizF(req, res, userId);
+});
+
+router.get('/obterResultadosQuizP/:userId', function (req, res) {
+    const userId = req.params.userId;
+    playlistController.obterResultadosQuizP(req, res, userId);
 });
 
 router.get('/obterResultadosQuiz2/:userId', function (req, res) {

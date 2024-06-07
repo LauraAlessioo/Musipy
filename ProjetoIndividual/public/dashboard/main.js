@@ -359,9 +359,45 @@ function enviarPlaylistParaBanco(nomePlaylist, userId) {
         atualizarGraficos2(userId);
         
         
+
+        function atualizarGraficosF(userId) {
+            
+            if (!userId) {
+                console.error("ID do usuário não definido!");
+                return;
+            }
+        
+            fetch(`/playlist/obterResultadosQuizF/${userId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao obter dados do servidor');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.Acertos !== undefined && data.Erros !== undefined) {
+                        atualizarGraficoAcertosErrosF(data.Acertos, data.Erros);
+                    } else {
+                        throw new Error("Dados de acertos e erros não foram recebidos corretamente.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao atualizar os gráficos:", error);
+                });
+        }
+        
+        function atualizarGraficoAcertosErrosF(acertos, erros) {
+            const data = [acertos, erros];
+            myChartF.data.datasets[0].data = data;
+            myChartF.update();
+        }    
+
+        atualizarGraficosF(userId);
+        
+
         const g1 = document.getElementById('myChartF');
 
-        new Chart(g1, {
+        const myChartF = new Chart(g1, {
             type: 'pie',
             data: {
                 labels: ['Acertos', 'Erros'],
@@ -369,7 +405,7 @@ function enviarPlaylistParaBanco(nomePlaylist, userId) {
                     label: 'Fala',
                      backgroundColor: ['#dc67ee', '#212037'],
                     borderColor: '#0000003a',
-                    data: [10, 55],
+                    data: [0, 0],
                     borderWidth: 1
                 }]
             },
@@ -384,9 +420,47 @@ function enviarPlaylistParaBanco(nomePlaylist, userId) {
             }
         });
         
+
+
+
+        function atualizarGraficosP(userId) {
+            
+            if (!userId) {
+                console.error("ID do usuário não definido!");
+                return;
+            }
+        
+            fetch(`/playlist/obterResultadosQuizP/${userId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao obter dados do servidor');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.Acertos !== undefined && data.Erros !== undefined) {
+                        atualizarGraficoAcertosErrosP(data.Acertos, data.Erros);
+                    } else {
+                        throw new Error("Dados de acertos e erros não foram recebidos corretamente.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao atualizar os gráficos:", error);
+                });
+        }
+        
+        function atualizarGraficoAcertosErrosP(acertos, erros) {
+            const data = [acertos, erros];
+            myChartP.data.datasets[0].data = data;
+            myChartP.update();
+        }    
+
+        atualizarGraficosP(userId);
+
+
         const g2 = document.getElementById('myChartP');
         
-        new Chart(g2, {
+        const myChartP = new Chart(g2, {
             type: 'pie',
             data: {
                 labels: ['Acertos', 'Erros'],
@@ -394,7 +468,7 @@ function enviarPlaylistParaBanco(nomePlaylist, userId) {
                     label: 'Pain Gone',
                      backgroundColor: ['#dc67ee', '#212037'],
                     borderColor: '#0000003a',
-                    data: [50, 40],
+                    data: [0, 0],
                     borderWidth: 1
                 }]
             },

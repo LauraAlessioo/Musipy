@@ -71,6 +71,41 @@ function enviarResultadosQuizParaBanco(req, res) {
         });
 }
 
+function enviarResultadosQuizParaBanco2(req, res) {
+    const { acertos, totalQuestoes, userId } = req.body;
+
+    if (acertos === undefined || totalQuestoes === undefined || userId === undefined) {
+        return res.status(400).send("Os resultados do quiz estão undefined!");
+    }
+
+    playlistModel.adicionarResultadosQuiz2(acertos, totalQuestoes, userId)
+        .then(data => {
+            console.log('Resultados do quiz enviados com sucesso:', data);
+            res.json({ message: 'Resultados do quiz enviados com sucesso!' });
+        })
+        .catch(error => {
+            console.error('Erro ao enviar os resultados do quiz:', error);
+            res.status(500).json({ error: 'Erro ao enviar os resultados do quiz' });
+        });
+}
+
+function enviarResultadosQuizParaBanco3(req, res) {
+    const { acertos, totalQuestoes, userId } = req.body;
+
+    if (acertos === undefined || totalQuestoes === undefined || userId === undefined) {
+        return res.status(400).send("Os resultados do quiz estão undefined!");
+    }
+
+    playlistModel.adicionarResultadosQuiz3(acertos, totalQuestoes, userId)
+        .then(data => {
+            console.log('Resultados do quiz enviados com sucesso:', data);
+            res.json({ message: 'Resultados do quiz enviados com sucesso!' });
+        })
+        .catch(error => {
+            console.error('Erro ao enviar os resultados do quiz:', error);
+            res.status(500).json({ error: 'Erro ao enviar os resultados do quiz' });
+        });
+}
 
 function obterResultadosQuiz(req, res, userId) {
     if (!userId) {
@@ -78,6 +113,46 @@ function obterResultadosQuiz(req, res, userId) {
     }
 
     playlistModel.obterResultadosQuiz(userId)
+        .then(data => {
+            if (data && data.length > 0) {
+                console.log('Resultados do quiz obtidos com sucesso:', data);
+                res.json(data[0]); // Enviar apenas o primeiro resultado
+            } else {
+                res.status(404).json({ error: 'Dados não encontrados' });
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao obter os resultados do quiz:', error);
+            res.status(500).json({ error: 'Erro ao obter os resultados do quiz' });
+        });
+}
+
+function obterResultadosQuizF(req, res, userId) {
+    if (!userId) {
+        return res.status(400).send("O ID do usuário está indefinido!");
+    }
+
+    playlistModel.obterResultadosQuizF(userId)
+        .then(data => {
+            if (data && data.length > 0) {
+                console.log('Resultados do quiz obtidos com sucesso:', data);
+                res.json(data[0]); // Enviar apenas o primeiro resultado
+            } else {
+                res.status(404).json({ error: 'Dados não encontrados' });
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao obter os resultados do quiz:', error);
+            res.status(500).json({ error: 'Erro ao obter os resultados do quiz' });
+        });
+}
+
+function obterResultadosQuizP(req, res, userId) {
+    if (!userId) {
+        return res.status(400).send("O ID do usuário está indefinido!");
+    }
+
+    playlistModel.obterResultadosQuizP(userId)
         .then(data => {
             if (data && data.length > 0) {
                 console.log('Resultados do quiz obtidos com sucesso:', data);
@@ -120,6 +195,10 @@ module.exports = {
     deletarPlaylist,
     obterQuantidadePlaylists,
     enviarResultadosQuizParaBanco,
+    enviarResultadosQuizParaBanco2,
+    enviarResultadosQuizParaBanco3,
     obterResultadosQuiz,
+    obterResultadosQuizF,
+    obterResultadosQuizP,
     obterResultadosQuiz2
 };

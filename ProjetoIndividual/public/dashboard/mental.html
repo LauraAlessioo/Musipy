@@ -168,11 +168,11 @@
             <div class="play-cont">
                 <div class="musi-esp">
                     <div class="miniatura">
-                        <img src="https://t4.ftcdn.net/jpg/06/29/94/97/360_F_629949736_LZTYQWh9XsKztcCJhXvuc0EQK3hDwp54.jpg" alt="">
+                        <img src="imgs/Music KizanBlu.jpeg" alt="">
                     </div>
                     <div class="des-musi">
                         <div class="tt">
-                            <span>SuperWave</span>
+                            <span>Vibrations</span>
                         </div>
                         <div class="autor">
                             <span>Playlist por: <u>Equipe Musipy</u></span>
@@ -211,6 +211,120 @@
  
 <!-- Emocional -->
 
+<script>
+    var questoes4 = [
+    "Como a musicoterapia pode influenciar positivamente as emoções dos pacientes?",
+    "Qual é o papel da música na expressão e regulação das emoções durante a musicoterapia?",
+    "Quais tipos de música são frequentemente utilizados na musicoterapia para promover relaxamento e alívio do estresse?",
+    "Como a musicoterapia pode ser adaptada para atender às necessidades emocionais de crianças com autismo?"
+];
+
+var opcs4 = [
+    ["A) Aumentando a pressão arterial", "B) Reduzindo o estresse e a ansiedade", "C) Diminuindo a sensação de fome", "D) Melhorando a coordenação motora"],
+    ["A) Causa descontrole emocional", "B) Não tem efeito nas emoções", "C) Ajuda na expressão e no gerenciamento das emoções", "D) Torna as emoções mais voláteis"],
+    ["A) Música agitada e enérgica", "B) Música alta e estridente", "C) Música clássica e suave", "D) Música pesada e sombria"],
+    ["A) Utilizando apenas músicas agitadas", "B) Integrando elementos visuais e sensoriais com a música", "C) Evitando completamente a música durante a terapia", "D) Limitando o tempo de sessão de musicoterapia"]
+];
+
+var respostaC4 = ["B) Reduzindo o estresse e a ansiedade", "C) Ajuda na expressão e no gerenciamento das emoções", "C) Música clássica e suave", "B) Integrando elementos visuais e sensoriais com a música"];
+
+var aQuestao = 0;
+var pontos = 0;
+var respostaSelecionada = false;
+
+function startQuiz4() {
+    var quizCard = document.getElementById('quizCard4');
+    var btnProximo = document.getElementById('btnProximo4');
+    var mainquiz = document.getElementById('mainquiz4');
+    var shadinho = document.getElementById('shadinho4');
+    mainquiz.style.display = 'flex';
+    shadinho.style.display = 'flex';
+    quizCard.style.display = 'flex';
+    btnProximo.style.display = 'inline';
+    aQuestao = 0;
+    pontos = 0;
+    respostaSelecionada = false;
+    showQuestion4(aQuestao);
+}
+
+function showQuestion4(index4) {
+    var quizContainer = document.getElementById('quiz-container4');
+    if (index4 < questoes4.length) {
+        respostaSelecionada = false;
+        var questionHtml = `<div class="questioneC"><p>${questoes4[index4]}</p></div>
+                            <div class="questione">`;
+
+        for (var contF = 0; contF < opcs4[index4].length; contF++) {
+            questionHtml += `<div class="optione" onclick="selectOption4(this, '${opcs4[index4][contF]}')">${opcs4[index4][contF]}</div>`;
+        }
+        questionHtml += `</div>`;
+        quizContainer.innerHTML = questionHtml;
+    } else {
+        quizContainer.innerHTML = `<div class="acertou">Você acertou ${pontos} de ${questoes4.length} perguntas.</div>
+        <img src="imgs/win.png" class="win">
+        <button class="fini" onclick="finalizarEnviarBanco4()">Finalizar Quiz</button>`;
+        document.getElementById('btnProximo4').style.display = 'none';
+    }
+}
+
+function selectOption4(option, selectedOption) {
+    var options = document.querySelectorAll('.optione');
+    for (var cont4f = 0; cont4f < options.length; cont4f++) {
+        options[cont4f].classList.remove('selected');
+    }
+    option.classList.add('selected');
+
+    if (!respostaSelecionada && selectedOption === respostaC4[aQuestao]) {
+        pontos++;
+        respostaSelecionada = true;
+    }
+}
+
+function showNextQuestion4() {
+    var selectedOption = document.querySelector('.optione.selected');
+    if (selectedOption) {
+        aQuestao++;
+        showQuestion4(aQuestao);
+    } else {
+        alert("Por favor, selecione uma opção.");
+    }
+}
+
+var userId = sessionStorage.ID_USUARIO;
+var playlistsKey = `playlists_${userId}`;
+
+function finalizarEnviarBanco4() {
+    var quizCard = document.getElementById('quizCard4');
+    var mainquiz = document.getElementById('mainquiz4');
+    var shadinho = document.getElementById('shadinho4');
+    quizCard.style.display = 'none';
+    mainquiz.style.display = 'none';
+    shadinho.style.display = 'none';
+    const erros = questoes4.length - pontos;
+
+    const resultadosQuiz = {
+        acertos: pontos,
+        totalQuestoes: erros,
+        userId: userId
+    };
+
+    fetch("/playlist/enviarResultadosQuizParaBanco4", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(resultadosQuiz)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Resultados do quiz enviados com sucesso:', data);
+    })
+    .catch(error => {
+        console.error('Erro ao enviar os resultados do quiz:', error);
+    });
+}
+
+</script>
 
 
 
@@ -333,121 +447,6 @@ function finalizarEnviarBanco3() {
 </script>
 
 <!-- Fala -->
-
-<script>
-    var questoes4 = [
-    "Como a musicoterapia pode influenciar positivamente as emoções dos pacientes?",
-    "Qual é o papel da música na expressão e regulação das emoções durante a musicoterapia?",
-    "Quais tipos de música são frequentemente utilizados na musicoterapia para promover relaxamento e alívio do estresse?",
-    "Como a musicoterapia pode ser adaptada para atender às necessidades emocionais de crianças com autismo?"
-];
-
-var opcs4 = [
-    ["A) Aumentando a pressão arterial", "B) Reduzindo o estresse e a ansiedade", "C) Diminuindo a sensação de fome", "D) Melhorando a coordenação motora"],
-    ["A) Causa descontrole emocional", "B) Não tem efeito nas emoções", "C) Ajuda na expressão e no gerenciamento das emoções", "D) Torna as emoções mais voláteis"],
-    ["A) Música agitada e enérgica", "B) Música alta e estridente", "C) Música clássica e suave", "D) Música pesada e sombria"],
-    ["A) Utilizando apenas músicas agitadas", "B) Integrando elementos visuais e sensoriais com a música", "C) Evitando completamente a música durante a terapia", "D) Limitando o tempo de sessão de musicoterapia"]
-];
-
-var respostaC4 = ["B) Reduzindo o estresse e a ansiedade", "C) Ajuda na expressão e no gerenciamento das emoções", "C) Música clássica e suave", "B) Integrando elementos visuais e sensoriais com a música"];
-
-var aQuestao = 0;
-var pontos = 0;
-var respostaSelecionada = false;
-
-function startQuiz4() {
-    var quizCard = document.getElementById('quizCard4');
-    var btnProximo = document.getElementById('btnProximo4');
-    var mainquiz = document.getElementById('mainquiz4');
-    var shadinho = document.getElementById('shadinho4');
-    mainquiz.style.display = 'flex';
-    shadinho.style.display = 'flex';
-    quizCard.style.display = 'flex';
-    btnProximo.style.display = 'inline';
-    aQuestao = 0;
-    pontos = 0;
-    respostaSelecionada = false;
-    showQuestion4(aQuestao);
-}
-
-function showQuestion4(index4) {
-    var quizContainer = document.getElementById('quiz-container4');
-    if (index4 < questoes4.length) {
-        respostaSelecionada = false;
-        var questionHtml = `<div class="questioneC"><p>${questoes4[index4]}</p></div>
-                            <div class="questione">`;
-
-        for (var contF = 0; contF < opcs4[index4].length; contF++) {
-            questionHtml += `<div class="optione" onclick="selectOption4(this, '${opcs4[index4][contF]}')">${opcs4[index4][contF]}</div>`;
-        }
-        questionHtml += `</div>`;
-        quizContainer.innerHTML = questionHtml;
-    } else {
-        quizContainer.innerHTML = `<div class="acertou">Você acertou ${pontos} de ${questoes4.length} perguntas.</div>
-        <img src="imgs/win.png" class="win">
-        <button class="fini" onclick="finalizarEnviarBanco4()">Finalizar Quiz</button>`;
-        document.getElementById('btnProximo4').style.display = 'none';
-    }
-}
-
-function selectOption4(option, selectedOption) {
-    var options = document.querySelectorAll('.optione');
-    for (var cont4f = 0; cont4f < options.length; cont4f++) {
-        options[cont4f].classList.remove('selected');
-    }
-    option.classList.add('selected');
-
-    if (!respostaSelecionada && selectedOption === respostaC4[aQuestao]) {
-        pontos++;
-        respostaSelecionada = true;
-    }
-}
-
-function showNextQuestion4() {
-    var selectedOption = document.querySelector('.optione.selected');
-    if (selectedOption) {
-        aQuestao++;
-        showQuestion4(aQuestao);
-    } else {
-        alert("Por favor, selecione uma opção.");
-    }
-}
-
-var userId = sessionStorage.ID_USUARIO;
-var playlistsKey = `playlists_${userId}`;
-
-function finalizarEnviarBanco4() {
-    var quizCard = document.getElementById('quizCard4');
-    var mainquiz = document.getElementById('mainquiz4');
-    var shadinho = document.getElementById('shadinho4');
-    quizCard.style.display = 'none';
-    mainquiz.style.display = 'none';
-    shadinho.style.display = 'none';
-    const erros = questoes4.length - pontos;
-
-    const resultadosQuiz = {
-        acertos: pontos,
-        totalQuestoes: erros,
-        userId: userId
-    };
-
-    fetch("/playlist/enviarResultadosQuizParaBanco4", {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(resultadosQuiz)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Resultados do quiz enviados com sucesso:', data);
-    })
-    .catch(error => {
-        console.error('Erro ao enviar os resultados do quiz:', error);
-    });
-}
-
-</script>
 
 
 <script>

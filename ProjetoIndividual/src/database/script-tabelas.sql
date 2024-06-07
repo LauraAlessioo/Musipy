@@ -39,17 +39,29 @@ fkUsuario int,
 	FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
 );
 
--- create table quizFala (
--- idQuiz int auto_increment primary key,
--- acertosF int,
--- errosF int,
--- fkUsuarioF int,
--- FOREIGN KEY (fkUsuarioF) REFERENCES usuario(id)
--- );
--- drop table quizFala;
+CREATE TABLE quiz2 (
+    idQuiz2 int auto_increment primary key,
+    acertos2 int,
+    erros2 int,
+    fkUsuario2 int,
+    FOREIGN KEY (fkUsuario2) REFERENCES usuario(id)
+);
 
 
 
+select * from quiz2;
+
+drop table quiz2;
+
+CREATE TABLE quiz3 (
+    idQuiz3 int auto_increment primary key,
+    acertos3 int,
+    erros3 int,
+    fkUsuario3 int,
+    FOREIGN KEY (fkUsuario3) REFERENCES usuario(id)
+);
+
+select * from quiz2;
 
 select * from quiz;
 
@@ -59,10 +71,13 @@ SELECT (ROUND((acertos / 4.0) * 100, 0)) AS Acertos,
 SELECT (ROUND((acertos / 4.0) * 100, 0)) AS Acertos,
 (ROUND((erros / 4.0) * 100, 0)) AS Erros FROM quiz WHERE fkUsuario = 1 ORDER BY idQuiz DESC LIMIT 1;
 
-select acertos from quiz where fkUsuario = 2 ORDER BY idQuiz DESC LIMIT 5;
+SELECT (ROUND((acertos2 / 4.0) * 100, 0)) AS Acertos,
+(ROUND((erros2 / 4.0) * 100, 0)) AS Erros FROM quiz2 WHERE fkUsuario2 = 1 ORDER BY idQuiz2 DESC LIMIT 1;
+
+select acertos from quiz where fkUsuario = 2 ORDER BY idQuiz DESC LIMIT 6;
 
 
-truncate quiz;
+
 
 -- fim quiz
 
